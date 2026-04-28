@@ -1,0 +1,140 @@
+﻿@model Demo.Models.DatSan
+
+@{
+    ViewBag.Title = "Đặt sân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <h2>Đặt lịch cho: <span class="text-success">@ViewBag.TenSan</span></h2>
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("MaSan", Request.QueryString["sanId"])
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger mb-3" })
+
+        <div class="row">
+            <div class="col-md-6">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <div class="card bg-light border-0 mb-3 rounded-3">
+                        <div class="card-body">
+                            <h6 class="fw-bold text-primary mb-3"><i class="fa-solid fa-user-pen me-2"></i>Thông tin liên hệ (Khách)</h6>
+                            <div class="mb-3">
+                                <label class="fw-bold small">Họ và Tên</label>
+                                <input type="text" name="TenKhachHang" class="form-control" placeholder="Nhập họ tên của bạn" required />
+                            </div>
+                            <div class="mb-0">
+                                <label class="fw-bold small">Số điện thoại</label>
+                                <input type="text" name="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại" required />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group mb-3">
+                    <label class="fw-bold">Ngày đặt</label>
+                    <input type="date"
+                           name="NgayDat"
+                           class="form-control"
+                           required
+                           value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                           min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                </div>
+
+                <div class="form-group mb-3">
+                    @Html.DropDownList("MaKhung", (SelectList)ViewBag.MaKhungList, "-- Chọn giờ --", new { @class = "form-control", required = "required" })
+                </div>
+                <div class="form-group mb-3">
+                    <label class="fw-bold">Ghi chú</label>
+                    @Html.TextAreaFor(m => m.GhiChu, new { @class = "form-control", rows = "3" })
+                </div>
+
+                <div class="alert alert-info">
+                    <input type="hidden" id="basePrice" value="@ViewBag.GiaThue" />
+                    Giá thuê (1h) + Dịch vụ: <strong id="displayTongTien" class="text-danger fs-5">@String.Format("{0:N0} VNĐ", ViewBag.GiaThue)</strong>
+                </div>
+
+                <h5 class="fw-bold mt-4">Dịch vụ đi kèm</h5>
+                <div class="mt-2 mb-4">
+                    @if (ViewBag.DichVuList != null)
+                    {
+                        foreach (var dv in (List<Demo.Models.DichVu>)ViewBag.DichVuList)
+                        {
+                            <div class="row mb-2 align-items-center service-item">
+                                <div class="col-md-8">
+                                    <div class="form-check">
+                                        <input class="form-check-input chk-dv" type="checkbox"
+                                               name="MaDV" value="@dv.MaDV"
+                                               data-price="@dv.DonGia" id="dv_@dv.MaDV">
+                                        <label class="form-check-label" for="dv_@dv.MaDV">
+                                            @dv.TenDichVu <span class="text-muted">(@String.Format("{0:N0}", dv.DonGia) VNĐ)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" name="SoLuong" class="form-control qty-dv"
+                                           value="0" min="0" disabled placeholder="SL" style="height: 30px;">
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="mt-4 d-flex gap-2">
+                    @* 👇 SỬA LỖI Ở ĐÂY: LUÔN HIỆN NÚT XÁC NHẬN (KHÔNG CHẶN KHÁCH NỮA) *@
+                    <button type="submit" class="btn btn-primary btn-lg flex-grow-1 fw-bold">
+                        <i class="fa-solid fa-check-circle me-2"></i> Xác nhận đặt sân
+                    </button>
+
+                    <a href="@Url.Action("Index", "Venues")" class="btn btn-secondary btn-lg">Hủy</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const basePrice = parseFloat(document.getElementById("basePrice").value) || 0;
+        const display = document.getElementById("displayTongTien");
+
+        function updateTotalPrice() {
+            let totalService = 0;
+            document.querySelectorAll('.chk-dv:checked').forEach(function (checkbox) {
+                const price = parseFloat(checkbox.getAttribute('data-price')) || 0;
+                const row = checkbox.closest('.row');
+                const qtyInput = row.querySelector('.qty-dv');
+                const qty = parseInt(qtyInput.value) || 0;
+
+                totalService += price * qty;
+            });
+
+            const finalTotal = basePrice + totalService;
+            display.innerText = finalTotal.toLocaleString('vi-VN') + " VNĐ";
+        }
+
+        document.querySelectorAll('.chk-dv').forEach(chk => {
+            chk.addEventListener('change', function () {
+                const row = this.closest('.row');
+                const qtyInput = row.querySelector('.qty-dv');
+
+                if (this.checked) {
+                    qtyInput.disabled = false;
+                    if (qtyInput.value == 0) qtyInput.value = 1;
+                } else {
+                    qtyInput.disabled = true;
+                    qtyInput.value = 0;
+                }
+                updateTotalPrice();
+            });
+        });
+
+        document.querySelectorAll('.qty-dv').forEach(input => {
+            input.addEventListener('input', updateTotalPrice);
+        });
+    });
+</script>

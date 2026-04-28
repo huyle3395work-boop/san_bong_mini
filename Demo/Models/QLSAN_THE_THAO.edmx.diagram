@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b0aad376b3d94f42ab30f90e5bb97722" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.BaoTri" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.ChiTietDichVu" Width="1.5" PointX="10.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.DanhGia" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.DatSan" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.DichVu" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.DoiTac" Width="1.5" PointX="1.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.HoSoNguoiChoi" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.KhungGio" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.KhuTheThao" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.LichTrongSan" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.LoaiTheThao" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.NguoiThamGiaTran" Width="1.5" PointX="10.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.SanTheThao" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.TaiKhoanUser" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.TinTuc" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.ThanhToan" Width="1.5" PointX="7.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.Trainer" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.TranDau" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.Voucher" Width="1.5" PointX="7.5" PointY="21" IsExpanded="true" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__BaoTri__MaSan__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__ChiTietDi__MaDat__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__ChiTietDic__MaDV__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__DanhGia__MaSan__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__DanhGia__MaUser__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__DatSan__MaKhung__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__DatSan__MaSan__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__DatSan__MaUser__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__ThanhToan__MaDat__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__KhuTheTha__MaDoi__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__HoSoNguoi__MaUse__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__LichTrong__MaKhu__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__TranDau__MaKhung__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__SanTheTha__MaKhu__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__LichTrong__MaSan__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__SanTheTha__MaLoa__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__TranDau__MaLoai__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__NguoiTham__MaTra__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__NguoiTham__MaUse__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__TranDau__MaSan__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__TranDau__MaNguoi__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.ApDungVoucher" ManuallyRouted="false" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.TrainerMonTheThao" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.PhieuNhapDichVu" Width="1.5" PointX="7" PointY="25" />
+        <EntityTypeShape EntityType="QL_SAN_THE_THAOModel.ChiTietPhieuNhap" Width="1.5" PointX="10.5" PointY="16.25" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__ChiTietPh__MaPhi__3587F3E0" />
+        <AssociationConnector Association="QL_SAN_THE_THAOModel.FK__ChiTietPhi__MaDV__367C1819" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

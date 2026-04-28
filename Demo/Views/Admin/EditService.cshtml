@@ -1,0 +1,55 @@
+﻿@model Demo.Models.DichVu
+
+@{
+    ViewBag.Title = "Chỉnh Sửa Dịch Vụ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin Dịch vụ</h4>
+        <hr />
+
+        @Html.HiddenFor(m => m.MaDV)
+
+        <div class="form-group">
+            @Html.Label("Mã dịch vụ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" value="@Model.MaDV" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.TenDichVu, "Tên dịch vụ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.TenDichVu, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DonViTinh, "Đơn vị tính", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.DonViTinh, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DonGia, "Đơn giá", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.DonGia, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 mt-3">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+                @Html.ActionLink("Hủy", "ManageServices", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+}

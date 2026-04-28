@@ -1,0 +1,22 @@
+﻿@model Demo.Models.Trainer
+
+@{
+    ViewBag.Title = "Xóa Huấn luyện viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xác nhận Xóa</h2>
+
+<h4>@Model.HoTen</h4>
+
+<p>
+    Khu vực: @Model.KhuVuc <br />
+    Giá/buổi: @String.Format("{0:N0} đ", Model.GiaMoiBuoi)
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Xóa" class="btn btn-danger" />
+    @Html.ActionLink("Hủy", "ManageTrainers", null, new { @class = "btn btn-secondary" })
+}

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Demo.Models.TinTuc>
+
+@{
+    ViewBag.Title = "Quản lý Tin Tức";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-header bg-white py-3 border-0 d-flex justify-content-between align-items-center">
+        <h5 class="fw-bold mb-0 text-dark">Danh sách Tin Tức</h5>
+        @Html.ActionLink("Thêm Tin Mới", "CreateNews", "Admin", null, new { @class = "btn btn-success btn-sm rounded-pill px-3" })
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="ps-4">Mã Tin</th>
+                        <th>Tiêu đề</th>
+                        <th>Ngày Đăng</th>
+                        <th>Tác Giả</th>
+                        <th class="text-end pe-4">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="ps-4">@item.MaTin</td>
+                            <td class="fw-bold">@item.TieuDe</td>
+                            <td>@(item.NgayDang.Value.ToString("dd/MM/yyyy"))</td>
+                            <td>@item.TacGia</td>
+                            <td class="text-end pe-4">
+                                @Html.ActionLink("Sửa", "EditNews", "Admin", new { id = item.MaTin }, new { @class = "btn btn-sm btn-outline-primary me-1" })
+                                @Html.ActionLink("Xóa", "DeleteNews", "Admin", new { id = item.MaTin }, new { @class = "btn btn-sm btn-outline-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

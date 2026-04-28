@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - Quản trị hệ thống</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: "Segoe UI", sans-serif;
+        }
+        .logout-form {
+            padding: 0;
+            margin: 0;
+            display: block; 
+        }
+
+            .logout-form button {
+                all: unset;
+                cursor: pointer;
+                width: 100%;
+                text-align: left;
+            }
+
+                .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            color: #fff;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            background: #212529;
+            border-bottom: 1px solid #4b545c;
+        }
+
+            .sidebar-header h3 {
+                margin: 0;
+                color: #82bb30;
+                font-weight: 800;
+            }
+
+        .nav-link {
+            color: #c2c7d0;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+            .nav-link i {
+                width: 25px;
+                text-align: center;
+                margin-right: 10px;
+            }
+
+            .nav-link:hover, .nav-link.active {
+                background-color: #82bb30;
+                color: #fff;
+                border-radius: 4px;
+                margin: 0 10px;
+            }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .top-navbar {
+            background: #fff;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>ADMIN</h3>
+        </div>
+        <div class="mt-3">
+            <a href="@Url.Action("Index", "Admin")" class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "Index" ? "active" : "")">
+                <i class="fa-solid fa-gauge-high"></i> Dashboard
+            </a>
+            <p class=" small fw-bold px-3 mt-3 mb-1" style="color: white">QUẢN LÝ</p>
+            <a href="@Url.Action("ManageVenues", "Admin")" class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "ManageVenues" ? "active" : "")">
+                <i class="fa-solid fa-map-location-dot"></i> Sân thể thao
+            </a>
+            <a href="@Url.Action("ManageBookings", "Admin")" class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "ManageBookings" ? "active" : "")">
+                <i class="fa-solid fa-calendar-check"></i> Đơn đặt sân
+            </a>
+            <a href="@Url.Action("ManageUsers", "Admin")" class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "ManageUsers" ? "active" : "")">
+                <i class="fa-solid fa-users"></i> Người dùng
+            </a>
+            <a href="@Url.Action("ManageNews", "Admin")" class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "ManageNews" ? "active" : "")">
+                <i class="fa-solid fa-newspaper"></i> Tin tức
+            </a>
+            <a href="@Url.Action("ManageServices", "Admin")"
+               class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "ManageServices" ? "active" : "")">
+                <i class="fa-solid fa-concierge-bell"></i> Dịch vụ
+            </a>
+            <a href="@Url.Action("ManageImport", "Admin")"
+               class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "ManageImport" ? "active" : "")">
+                <i class="fa-solid fa-chart-line"></i> Nhập kho
+            </a>
+            <a href="@Url.Action("ManageTrainers","Admin")"
+               class="nav-link @(ViewContext.RouteData.Values["action"].ToString().Contains("Trainer") ? "active" : "")">
+                <i class="fa-solid fa-dumbbell"></i> Huấn luyện viên
+            </a>
+            <a href="@Url.Action("RevenueReport", "Admin")"
+               class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "RevenueReport" ? "active" : "")">
+                <i class="fa-solid fa-chart-line"></i> Doanh thu
+            </a>
+
+
+
+            <p class="small fw-bold px-3 mt-3 mb-1" style="color: white">HỆ THỐNG</p>
+            <a href="@Url.Action("Index", "San")" class="nav-link text-warning">
+                <i class="fa-solid fa-arrow-left"></i> Về trang chủ
+            </a>
+            @using (Html.BeginForm("Logout", "Admin", FormMethod.Post, new { id = "logoutForm", @class = "logout-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" id="logoutButton" class="nav-link text-danger">
+                    <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+                </button>
+            }
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-navbar">
+            <h5 class="m-0 text-dark fw-bold">@ViewBag.Title</h5>
+            <div class="d-flex align-items-center gap-3">
+                <span class="fw-bold">Xin chào, Admin</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="35" class="rounded-circle border">
+            </div>
+        </div>
+
+        @RenderBody()
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+
+    <script>
+        $(document).ready(function () {
+            $('#logoutButton').click(function (e) {
+                e.preventDefault();
+
+                var confirmed = confirm("Do you want to log out?");
+
+                if (confirmed) {
+                    $('#logoutForm').submit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

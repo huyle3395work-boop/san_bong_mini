@@ -1,0 +1,26 @@
+﻿@model Demo.Models.KHACHHANG
+@{
+    ViewBag.Title = "Hồ sơ cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container py-5">
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+        <div class="row align-items-center">
+            <div class="col-md-3 text-center">
+                <img src="@Model.AnhDaiDien" class="rounded-circle border" width="160" height="160" style="object-fit:cover;" />
+            </div>
+            <div class="col-md-9">
+                <h2 class="fw-bold text-success mb-3">@Model.HoTen</h2>
+                <div class="fs-5 mb-2"><i class="fa-regular fa-envelope me-2 text-muted"></i>@Model.Email</div>
+                <div class="fs-5 mb-2"><i class="fa-solid fa-phone me-2 text-muted"></i>@(Model.SDT ?? "Chưa cập nhật")</div>
+                <div class="fs-6 text-muted"><i class="fa-regular fa-calendar me-2"></i>Ngày gia nhập: @Model.NgayTao.Value.ToString("dd/MM/yyyy")</div>
+
+                <div class="mt-4">
+                    <a href="@Url.Action("MyBookings", "Bookings")" class="btn btn-primary rounded-pill px-4 fw-bold">
+                        <i class="fa-solid fa-clock-history me-2"></i>Xem lịch sử đặt sân
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

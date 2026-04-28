@@ -1,0 +1,145 @@
+﻿@{ Layout = null; }
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 rounded-4 overflow-hidden">
+            <div class="d-flex flex-wrap" style="height: 680px">
+                <div class="col-md-6 position-relative" style="background:#f3f5f4;">
+                    <img src="~/Content/images/map.png" class="w-100 h-100 object-fit-cover" />
+                </div>
+
+                <div class="col-md-6 p-4 bg-white position-relative">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 id="loginTitle" class="fw-bold">Login / Sign Up</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div id="stepEmail">
+                        <label class="form-label small text-muted">Nhập Email <span class="text-danger">*</span></label>
+                        <input type="email" id="emailInput" class="form-control mb-2" placeholder="example@gmail.com" />
+                        <div id="emailStatus" class="text-center small fw-semibold mb-2"></div>
+                        <button class="btn btn-success w-100 rounded-pill fw-bold mt-2" id="btnSendOTP">GỬI MÃ OTP</button>
+                        <div class="text-center mt-3">
+                            <a href="#" id="switchToPassword" class="small text-decoration-none fw-bold text-success">Đăng nhập bằng mật khẩu?</a>
+                        </div>
+                    </div>
+
+                    <div id="stepPasswordLogin" class="d-none">
+                        <div class="mb-3">
+                            <label class="form-label small text-muted">Email</label>
+                            <input type="email" id="loginEmail" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small text-muted">Mật khẩu</label>
+                            <input type="password" id="loginPass" class="form-control" />
+                        </div>
+                        <div id="loginError" class="text-danger small mb-2 text-center"></div>
+                        <button class="btn btn-success w-100 rounded-pill fw-bold" id="btnLoginSubmit">ĐĂNG NHẬP</button>
+                        <div class="text-center mt-3">
+                            <a href="#" id="switchToOTP" class="small text-decoration-none fw-bold text-success">Dùng mã OTP?</a>
+                        </div>
+                    </div>
+
+                    <div id="stepOTP" class="d-none text-center">
+                        <p class="small text-muted mt-3">Mã OTP đã gửi tới <span id="verifyEmail" class="fw-semibold"></span></p>
+                        <div class="d-flex justify-content-center gap-2 mb-3">
+                            <input type="text" maxlength="6" id="otpFull" class="form-control text-center fw-bold fs-4" placeholder="000000" />
+                        </div>
+                        <div id="otpError" class="text-danger small mb-2"></div>
+                        <button class="btn btn-success w-100 rounded-pill fw-bold" id="btnVerify">XÁC THỰC</button>
+                    </div>
+
+                    <div id="stepProfile" class="d-none">
+                        <h5 class="fw-bold mb-3">Hoàn tất hồ sơ</h5>
+                        <input type="hidden" id="EmailHidden" />
+                        <div class="mb-2">
+                            <label class="small text-muted">Họ và Tên <span class="text-danger">*</span></label>
+                            <input type="text" id="fullNameProfile" class="form-control" />
+                        </div>
+                        <div class="mb-2">
+                            <label class="small text-muted">Số điện thoại</label>
+                            <input type="text" id="mobile" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="small text-muted">Thiết lập mật khẩu <span class="text-danger">*</span></label>
+                            <input type="password" id="profilePassword" class="form-control" placeholder="Ít nhất 6 ký tự" />
+                        </div>
+                        <div id="profileMessage" class="text-center small mb-2"></div>
+                        <button class="btn btn-success w-100 rounded-pill fw-bold" id="btnProceed">HOÀN TẤT & ĐẶT SÂN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("switchToPassword").onclick = (e) => {
+        e.preventDefault();
+        document.getElementById("stepEmail").classList.add("d-none");
+        document.getElementById("stepPasswordLogin").classList.remove("d-none");
+    };
+    document.getElementById("switchToOTP").onclick = (e) => {
+        e.preventDefault();
+        document.getElementById("stepPasswordLogin").classList.add("d-none");
+        document.getElementById("stepEmail").classList.remove("d-none");
+    };
+
+    document.getElementById("btnSendOTP").onclick = async () => {
+        const email = document.getElementById("emailInput").value;
+        const res = await fetch("/Account/SendOTP", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (data.success) {
+            document.getElementById("verifyEmail").innerText = email;
+            document.getElementById("stepEmail").classList.add("d-none");
+            document.getElementById("stepOTP").classList.remove("d-none");
+        }
+    };
+
+    document.getElementById("btnVerify").onclick = async () => {
+        const otp = document.getElementById("otpFull").value;
+        const email = document.getElementById("verifyEmail").innerText;
+        const res = await fetch("/Account/VerifyOTP", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ otp, email })
+        });
+        const data = await res.json();
+        if (data.success) {
+            if (data.isNewUser) {
+                document.getElementById("EmailHidden").value = email;
+                document.getElementById("stepOTP").classList.add("d-none");
+                document.getElementById("stepProfile").classList.remove("d-none");
+            } else { location.reload(); }
+        } else { document.getElementById("otpError").innerText = data.message; }
+    };
+
+    document.getElementById("btnLoginSubmit").onclick = async () => {
+        const username = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPass").value;
+        const res = await fetch("/Account/Login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.success) { location.reload(); }
+        else { document.getElementById("loginError").innerText = data.message; }
+    };
+
+    document.getElementById("btnProceed").onclick = async () => {
+        const formData = new FormData();
+        formData.append("Email", document.getElementById("EmailHidden").value);
+        formData.append("FullName", document.getElementById("fullNameProfile").value);
+        formData.append("Mobile", document.getElementById("mobile").value);
+        formData.append("Password", document.getElementById("profilePassword").value);
+
+        const res = await fetch("/Account/CreateProfile", { method: "POST", body: formData });
+        const data = await res.json();
+        if (data.success) { location.reload(); }
+        else { document.getElementById("profileMessage").innerText = data.message; }
+    };
+</script>

@@ -1,0 +1,179 @@
+﻿@{
+    ViewBag.Title = "Tổng quan hệ thống";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <small class="text-muted">Doanh thu tháng này</small>
+                        <h4 class="fw-bold mt-2 text-dark">
+                            @String.Format("{0:N0} đ", ViewBag.DoanhThuThang)
+                        </h4>
+                    </div>
+                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center"
+                         style="width:50px;height:50px;">
+                        <i class="fa-solid fa-sack-dollar fs-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <small class="text-muted">Đơn chờ duyệt</small>
+                        <h4 class="fw-bold mt-2 text-danger">
+                            @ViewBag.DonChoDuyet
+                        </h4>
+                    </div>
+                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center"
+                         style="width:50px;height:50px;">
+                        <i class="fa-solid fa-clock fs-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <small class="text-muted">Đơn đặt hôm nay</small>
+                        <h4 class="fw-bold mt-2 text-dark">
+                            @ViewBag.DonHomNay
+                        </h4>
+                    </div>
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center"
+                         style="width:50px;height:50px;">
+                        <i class="fa-solid fa-calendar-day fs-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <small class="text-muted">Tổng thành viên</small>
+                        <h4 class="fw-bold mt-2 text-dark">
+                            @ViewBag.TongThanhVien
+                        </h4>
+                    </div>
+                    <div class="text-white rounded-circle d-flex align-items-center justify-content-center"
+                         style="width:50px;height:50px; background:#6f42c1;">
+                        <i class="fa-solid fa-users fs-5"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body">
+
+            <h5 class="fw-bold mb-4">
+                <i class="fa-solid fa-list me-2"></i> Đơn đặt sân mới nhất
+            </h5>
+
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Mã Đơn</th>
+                            <th>Khách Hàng</th>
+                            <th>Sân</th>
+                            <th>Ngày Đá</th>
+                            <th>Giờ</th>
+                            <th class="text-end">Tổng Tiền</th>
+                            <th>Trạng Thái</th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.DonMoiNhat != null)
+                        {
+                            foreach (var d in ViewBag.DonMoiNhat)
+                            {
+                                <tr>
+                                    <td class="fw-bold">@d.MaDat</td>
+                                    <td>
+                                        @{
+                                            var dictName = ViewBag.TenKhachHang as Dictionary<int, string>;
+                                            string tenKhach = "Khách vãng lai";
+
+                                            if (dictName != null && d.MaUser != null && dictName.ContainsKey(d.MaUser))
+                                            {
+                                                tenKhach = dictName[d.MaUser];
+                                            }
+                                        }
+                                        <span class="fw-bold">@tenKhach</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border">
+                                            @(d.SanTheThao != null ? d.SanTheThao.TenSan : "")
+                                        </span>
+                                    </td>
+                                    <td>@d.NgayDat.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        @(d.KhungGio != null ? d.KhungGio.GioBatDau.ToString(@"hh\:mm") : "")
+                                        -
+                                        @(d.KhungGio != null ? d.KhungGio.GioKetThuc.ToString(@"hh\:mm") : "")
+                                    </td>
+                                    <td class="text-end text-success fw-bold">
+                                        @String.Format("{0:N0} đ", d.TongTien)
+                                    </td>
+                                    <td>
+                                        @if (d.TrangThai == "Đã thanh toán")
+                                        {
+                                            <span class="badge bg-success">Đã thanh toán</span>
+                                        }
+                                        else if (d.TrangThai == "Đã hủy")
+                                        {
+                                            <span class="badge bg-danger">Đã hủy</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning text-dark">@d.TrangThai</span>
+                                        }
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="@Url.Action("ManageBookings","Admin")"
+                                           class="btn btn-outline-primary btn-sm">
+                                            Chi tiết
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center text-muted">
+                                    Không có dữ liệu
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="@Url.Action("ManageBookings","Admin")"
+                   class="fw-bold text-primary text-decoration-none">
+                    Xem tất cả đơn hàng →
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</div>

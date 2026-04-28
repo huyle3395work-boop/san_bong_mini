@@ -1,0 +1,89 @@
+﻿<style>
+    .filter-group {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    .filter-option {
+        margin-bottom: 10px;
+    }
+
+    .skill-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+        .skill-pills span {
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+            .skill-pills span.selected {
+                background: #00c853;
+                color: #fff;
+            }
+</style>
+
+<div class="filter-content">
+
+    <div class="filter-group">
+        <h6 class="fw-bold mb-3">SORT BY</h6>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="radio" name="SortBy" id="sortTime" value="Time" checked>
+            <label class="form-check-label" for="sortTime">Time & Date</label>
+        </div>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="radio" name="SortBy" id="sortDistance" value="Distance">
+            <label class="form-check-label" for="sortDistance">Distance</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <h6 class="fw-bold mb-3">TIME</h6>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="checkbox" id="timeMorning" value="Morning">
+            <label class="form-check-label" for="timeMorning">Morning (12 AM to 9 AM)</label>
+        </div>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="checkbox" id="timeDay" value="Day">
+            <label class="form-check-label" for="timeDay">Day (9 AM to 4 PM)</label>
+        </div>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="checkbox" id="timeEvening" value="Evening">
+            <label class="form-check-label" for="timeEvening">Evening (4 PM to 9 PM)</label>
+        </div>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="checkbox" id="timeNight" value="Night">
+            <label class="form-check-label" for="timeNight">Night (9 PM to 12 PM)</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <h6 class="fw-bold mb-3">SKILL</h6>
+        <div class="skill-pills">
+            @foreach (var skill in new[] { "Beginner", "Amateur", "Intermediate", "Advanced", "Professional" })
+            {
+                <span data-skill="@skill">@skill</span>
+            }
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <h6 class="fw-bold mb-3">OTHERS</h6>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="checkbox" id="otherBooked" value="Booked">
+            <label class="form-check-label" for="otherBooked">Booked on Playo</label>
+        </div>
+        <div class="form-check filter-option">
+            <input class="form-check-input" type="checkbox" id="otherPayJoin" value="PayJoin">
+            <label class="form-check-label" for="otherPayJoin">Pay & Join Games</label>
+        </div>
+    </div>
+
+</div>

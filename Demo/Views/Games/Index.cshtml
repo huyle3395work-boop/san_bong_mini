@@ -1,0 +1,326 @@
+﻿@model List<Demo.Models.TranDau>
+@{
+    ViewBag.Title = "Games in Bangalore";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var allSports = ViewBag.LoaiTheThao as List<Demo.Models.LoaiTheThao>;
+    var gamesCount = Model?.Count ?? 0;
+
+    var currentSort = ViewBag.CurrentSort as string ?? "";
+    var currentSport = ViewBag.CurrentSport as string ?? "";
+    var timeFilter = ViewBag.CurrentTime as string ?? "";
+    var skillFilter = ViewBag.CurrentSkill as string ?? "";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+    .dropdown-menu .dropdown-item.sport-item.active {
+        background-color: #00c853;
+        color: #fff;
+        font-weight: 600;
+    }
+
+        .dropdown-menu .dropdown-item.sport-item.active:hover {
+            background-color: #00b44a;
+            color: #fff;
+        }
+
+    body {
+        background-color: #f7f8f8;
+    }
+
+    .filter-button {
+        background-color: #f0f0f0;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-weight: 600;
+        color: #333;
+        transition: background-color 0.2s;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+        .filter-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .filter-button.active {
+            background-color: #00c853;
+            color: #fff;
+        }
+
+    .filter-badge {
+        background-color: #fff;
+        color: #00c853;
+        padding: 2px 6px;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        font-weight: 700;
+    }
+
+    .filter-button.active .filter-badge {
+        background-color: #fff;
+        color: #00c853;
+    }
+
+    .pay-join-btn {
+        background-color: #00c853;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .game-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        padding: 15px;
+        margin-bottom: 20px;
+        transition: transform 0.2s;
+        height: 100%;
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 50px;
+        color: #999;
+    }
+
+        .no-results i {
+            font-size: 3rem;
+        }
+
+    .collection-card {
+        position: relative;
+        height: 150px;
+        border-radius: 12px;
+        overflow: hidden;
+        background-color: #333;
+        color: white;
+    }
+
+    .collection-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 15px;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        width: 100%;
+    }
+</style>
+
+<div class="game-header-bar bg-white py-3 shadow-sm mb-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h3 class="fw-bold m-0 text-success">Games in Bangalore</h3>
+        <div class="d-flex gap-3 align-items-center">
+            <a href="#" class="btn btn-sm pay-join-btn">Pay & Join Game</a>
+            <a href="#" class="text-dark small"><i class="fa-brands fa-google-play fa-2x"></i></a>
+            <a href="#" class="text-dark small"><i class="fa-brands fa-app-store fa-2x"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+
+    <div class="d-flex flex-wrap gap-2 mb-4 align-items-center">
+
+        <button class="filter-button @(currentSort == "GameTime" ? "active" : "")">
+            <i class="fa-solid fa-lightbulb"></i> GameTime by Playo
+        </button>
+
+        <button class="filter-button @(currentSort != "" || !string.IsNullOrEmpty(skillFilter) || !string.IsNullOrEmpty(timeFilter) ? "active" : "")"
+                data-bs-toggle="modal" data-bs-target="#filterSortModal">
+            <i class="fa-solid fa-filter"></i> Filter & Sort By
+            @if (!string.IsNullOrEmpty(skillFilter) || !string.IsNullOrEmpty(timeFilter))
+            {
+                <span class="filter-badge">!</span>
+            }
+        </button>
+
+        <div class="dropdown">
+            <button class="filter-button dropdown-toggle @(currentSport != "" ? "active" : "")"
+                    type="button" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-futbol"></i> Sports
+                @if (currentSport != "")
+                {<span class="filter-badge">1</span>}
+            </button>
+            <ul class="dropdown-menu">
+                @if (allSports != null)
+                {
+                    foreach (var sport in allSports)
+                    {
+                        var isActive = currentSport == sport.MaLoai;
+                        <li>
+                            <a class="dropdown-item sport-item @(isActive ? "active" : "")"
+                               href="@(isActive ? Url.Action("Index") : Url.Action("Index", new { sportFilter = sport.MaLoai }))">
+                                @sport.TenLoai
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <button id="dateFilterBtn" class="filter-button dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-calendar-day"></i>
+                <span id="dateFilterText">Date</span>
+                <span id="dateFilterBadge" class="filter-badge d-none">1</span>
+            </button>
+            <div class="dropdown-menu p-3" style="width: 320px;">
+                @Html.Partial("_GameCalendarPartial")
+            </div>
+        </div>
+
+        <button class="filter-button active ms-auto">
+            <i class="fa-solid fa-sack-dollar"></i> Pay & Join Game
+        </button>
+    </div>
+    <div class="row pt-3">
+        @if (gamesCount > 0)
+        {
+            foreach (var game in Model)
+            {
+                <div class="col-md-4">
+                    <div class="game-card">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted small text-uppercase fw-bold">
+                                @(game.SanTheThao?.MoTa ?? "5 A Side") @(game.LoaiHinh_Tran ?? "Regular")
+                            </span>
+                            @{
+                                decimal mockFee = (game.MaTran?.Length ?? 0) % 3 == 0 ? 249m : 0m;
+                            }
+                            @if (mockFee > 0)
+                            {
+                                <span class="badge bg-success bg-opacity-10 text-success">INR @string.Format("{0:N0}", mockFee)</span>
+                            }
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2 mb-3">
+                            <img src="@(game.TaiKhoanUser?.HoSoNguoiChoi?.AnhDaiDien ?? "/Content/images/default-avatar.png")"
+                                 width="30" height="30" class="rounded-circle border" style="object-fit:cover;">
+                            <span class="fw-bold text-success">1 Going</span>
+                            <span class="text-muted small">| @(game.TaiKhoanUser?.TenDangNhap ?? "User")</span>
+                            <span class="text-warning small">| @(game.TaiKhoanUser?.HoSoNguoiChoi?.DiemUyTin ?? 2000) Karma</span>
+                        </div>
+
+                        <p class="fw-bold mb-1" style="font-size: 1.1rem;">
+                            @(game.Ngay.HasValue ? game.Ngay.Value.ToString("ddd, dd MMM") : "")
+                            @(game.KhungGio != null ? game.KhungGio.GioBatDau.ToString(@"hh\:mm") + " - " + game.KhungGio.GioKetThuc.ToString(@"hh\:mm") : "")
+                        </p>
+
+                        <p class="small text-muted mb-3">
+                            <i class="fa-solid fa-location-dot me-1 text-danger"></i>
+                            @(game.SanTheThao?.TenSan ?? "TurfX") - <span class="text-muted">~3.31 Kms</span>
+                        </p>
+
+                        <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                            <span class="badge bg-light text-dark border">@(game.TrinhDo ?? "All Levels")</span>
+                            <span class="fw-bold text-muted small">BOOKED</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 no-results">
+                <i class="fa-solid fa-head-side-mask mb-3 text-muted"></i>
+                <p class="text-muted fs-5">No Results Found</p>
+            </div>
+        }
+    </div>
+
+    <div class="text-center my-4">
+        <button class="btn pay-join-btn rounded-pill px-5">LOAD MORE</button>
+    </div>
+
+    <div class="py-5">
+        <h3 class="fw-bold mb-4">Collections For You</h3>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="collection-card bg-secondary d-flex align-items-end p-3" style="background: url('https://via.placeholder.com/400x200') center/cover;">
+                    <div class="text-white">
+                        <h5 class="fw-bold mb-0">Top Venues Near You</h5>
+                        <p class="small mb-0">400+ venues</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="collection-card bg-secondary d-flex align-items-end p-3" style="background: url('https://via.placeholder.com/400x200') center/cover;">
+                    <div class="text-white">
+                        <h5 class="fw-bold mb-0">Explore Best Coaches</h5>
+                        <p class="small mb-0">Certified Trainers</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="collection-card bg-secondary d-flex align-items-end p-3" style="background: url('https://via.placeholder.com/400x200') center/cover;">
+                    <div class="text-white">
+                        <h5 class="fw-bold mb-0">Discover Best Events</h5>
+                        <p class="small mb-0">100+ Events & Deals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="filterSortModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Filter & Sort By</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Html.Action("FilterSortPartial", "Games")
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-link text-danger text-decoration-none fw-bold">Reset All</button>
+                <button type="button" class="btn btn-success fw-bold px-4" data-bs-dismiss="modal">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let selectedDate = null;
+        $(document).on("click", ".calendar-day:not(.disabled)", function () {
+            const date = $(this).data("date");
+            if (selectedDate === date) {
+                selectedDate = null;
+                $(".calendar-day").removeClass("selected");
+                $("#dateFilterText").text("Date");
+                $("#dateFilterBadge").addClass("d-none");
+                $("#dateFilterBtn").removeClass("active");
+                return;
+            }
+            selectedDate = date;
+            $(".calendar-day").removeClass("selected");
+            $(this).addClass("selected");
+            $("#dateFilterText").text("Date");
+            $("#dateFilterBadge").removeClass("d-none");
+            $("#dateFilterBtn").addClass("active");
+            console.log("Selected date:", selectedDate);
+        });
+
+        $(document).on("click", "#calendarTodayBtn", function () {
+            const today = new Date().toISOString().split("T")[0];
+            selectedDate = today;
+            $(".calendar-day").removeClass("selected");
+            $(`.calendar-day[data-date='${today}']`).addClass("selected");
+            $("#dateFilterText").text("Date");
+            $("#dateFilterBadge").removeClass("d-none");
+            $("#dateFilterBtn").addClass("active");
+        });
+    </script>
+}

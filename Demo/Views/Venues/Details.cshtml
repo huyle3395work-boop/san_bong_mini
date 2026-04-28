@@ -1,0 +1,51 @@
+﻿@model Demo.Models.SanTheThao
+
+@{
+    ViewBag.Title = "Chi tiết sân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="@(string.IsNullOrEmpty(Model.HinhAnh) ? Url.Content("~/Content/images/default-venue.jpg") : (Model.HinhAnh.StartsWith("/") ? Url.Content("~" + Model.HinhAnh) : Url.Content("~/" + Model.HinhAnh)))"
+                 class="img-fluid rounded-3 mb-3 shadow-sm w-100" style="object-fit: cover; max-height: 400px;" alt="@Model.TenSan" />
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="fw-bold text-success">@Model.TenSan</h2>
+            <hr />
+
+            <p class="fs-5">
+                <i class="fa-solid fa-map-location-dot text-danger me-2"></i>
+                <strong>Khu vực:</strong>
+                @(Model.KhuTheThao != null ? Model.KhuTheThao.TenKhu : "Chưa cập nhật")
+            </p>
+
+            <p class="fs-5">
+                <i class="fa-solid fa-money-bill-wave text-success me-2"></i>
+                <strong>Giá thuê:</strong>
+                <span class="fw-bold text-dark">@String.Format("{0:N0} VNĐ", Model.GiaThueTheoGio) / giờ</span>
+            </p>
+
+            <div class="mb-4">
+                <h5 class="fw-bold"><i class="fa-solid fa-circle-info me-2 text-primary"></i>Mô tả:</h5>
+                <p class="text-muted">
+                    @(string.IsNullOrEmpty(Model.MoTa) ? "Chưa có mô tả cho sân này." : Model.MoTa)
+                </p>
+            </div>
+
+            <div class="d-grid gap-2 col-md-8">
+                <a href="@Url.Action("Create", "Bookings", new { sanId = Model.MaSan })"
+                   class="btn btn-success btn-lg fw-bold shadow-sm"
+                   onclick="checkBookingAccess(event, this.href)">
+                    <i class="fa-regular fa-calendar-check me-2"></i> Đặt sân ngay
+                </a>
+
+                <a href="@Url.Action("Index", "Venues")" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-arrow-left me-2"></i> Quay lại danh sách
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

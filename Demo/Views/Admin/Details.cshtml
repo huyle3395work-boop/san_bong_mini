@@ -1,0 +1,159 @@
+﻿@model Demo.Models.DatSan
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng " + Model.MaDat;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+    decimal tongTienDichVu = 0;
+}
+
+<div class="container-fluid py-4">
+    <a href="@Url.Action("ManageBookings", "Admin")" class="btn btn-outline-secondary mb-3">
+        <i class="fa-solid fa-arrow-left"></i> Quay lại danh sách
+    </a>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 rounded-4 mb-4">
+                <div class="card-header bg-white py-3">
+                    <h5 class="fw-bold mb-0 text-primary">Thông tin Khách hàng</h5>
+                </div>
+                <div class="card-body text-center">
+                    <img src="@(ViewBag.AnhDaiDien ?? "/Content/images/default-avatar.png")"
+                         class="rounded-circle mb-3 border" style="width: 100px; height: 100px; object-fit: cover;">
+
+                    <h5 class="fw-bold">@ViewBag.TenKhach</h5>
+                    <p class="text-muted mb-1"><i class="fa-solid fa-phone me-2"></i> @ViewBag.SDT</p>
+                    <p class="text-muted"><i class="fa-solid fa-envelope me-2"></i> @ViewBag.Email</p>
+                    <hr>
+                    <div class="text-start">
+                        <p><strong>Mã User:</strong> @Model.MaUser</p>
+                        <p><strong>Ngày đặt:</strong> @Model.NgayDat.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-body">
+                    <label class="text-muted small">Trạng thái đơn hàng</label>
+                    <div class="mt-2">
+                        @if (Model.TrangThai == "Đã thanh toán")
+                        {<span class="badge bg-success fs-6 w-100 py-2">Đã thanh toán</span> }
+                        else if (Model.TrangThai == "Đã hủy")
+                        { <span class="badge bg-danger fs-6 w-100 py-2">Đã hủy</span> }
+                        else if (Model.TrangThai == "Chờ xác nhận")
+                        { <span class="badge bg-warning text-dark fs-6 w-100 py-2">Chờ xác nhận</span> }
+                        else
+                        { <span class="badge bg-info fs-6 w-100 py-2">@Model.TrangThai</span>}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0">Chi tiết Hóa đơn: #@Model.MaDat</h5>
+                    <span class="text-muted">Ngày tạo: @Model.NgayDat.ToString("dd/MM/yyyy")</span>
+                </div>
+                <div class="card-body">
+
+                    <h6 class="fw-bold text-uppercase text-muted mb-3">1. Tiền thuê sân</h6>
+                    <table class="table table-bordered mb-4">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tên Sân</th>
+                                <th>Khung Giờ</th>
+                                <th class="text-end">Đơn giá</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.SanTheThao.TenSan</td>
+                                <td>
+                                    @(Model.KhungGio != null ? Model.KhungGio.GioBatDau.ToString(@"hh\:mm") + " - " + Model.KhungGio.GioKetThuc.ToString(@"hh\:mm") : "N/A")
+                                </td>
+                                <td class="text-end fw-bold">@String.Format("{0:N0} đ", Model.SanTheThao.GiaThueTheoGio)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h6 class="fw-bold text-uppercase text-muted mb-3">2. Dịch vụ đi kèm</h6>
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Tên Dịch Vụ</th>
+                                <th class="text-center">Số lượng</th>
+                                <th class="text-end">Đơn giá</th>
+                                <th class="text-end">Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ChiTietDichVu != null && Model.ChiTietDichVu.Count > 0)
+                            {
+                                foreach (var ct in Model.ChiTietDichVu)
+                                {
+                                    decimal donGia = ct.DichVu.DonGia ?? 0;
+                                    decimal thanhTien = donGia * (ct.SoLuong ?? 0);
+                                    tongTienDichVu += thanhTien;
+                                    <tr>
+                                        <td>@ct.DichVu.TenDichVu</td>
+                                        <td class="text-center">@ct.SoLuong</td>
+                                        <td class="text-end">@String.Format("{0:N0}", donGia)</td>
+                                        <td class="text-end fw-bold">@String.Format("{0:N0}", thanhTien)</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted fst-italic">Không sử dụng dịch vụ thêm</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <hr />
+
+                    <div class="row justify-content-end">
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Tiền sân:</span>
+                                <span class="fw-bold">@String.Format("{0:N0} đ", Model.SanTheThao.GiaThueTheoGio)</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Tiền dịch vụ:</span>
+                                <span class="fw-bold">@String.Format("{0:N0} đ", tongTienDichVu)</span>
+                            </div>
+                            <div class="d-flex justify-content-between border-top pt-2 mt-2">
+                                <span class="h5 fw-bold text-primary">TỔNG THANH TOÁN:</span>
+                                <span class="h4 fw-bold text-danger">@String.Format("{0:N0} đ", Model.TongTien)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-footer bg-white py-3 text-end">
+                    @if (Model.TrangThai == "Chờ xác nhận")
+                    {
+                        using (Html.BeginForm("ConfirmBooking", "Admin", new { id = Model.MaDat }, FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button class="btn btn-success me-2"><i class="fa-solid fa-check"></i> Xác nhận đơn</button>
+                        }
+                    }
+
+                    @if (Model.TrangThai != "Đã hủy" && Model.TrangThai != "Đã thanh toán")
+                    {
+                        using (Html.BeginForm("CancelBooking", "Admin", new { id = Model.MaDat }, FormMethod.Post, new { @class = "d-inline" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <button class="btn btn-danger" onclick="return confirm('Hủy đơn này?')"><i class="fa-solid fa-xmark"></i> Hủy đơn</button>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

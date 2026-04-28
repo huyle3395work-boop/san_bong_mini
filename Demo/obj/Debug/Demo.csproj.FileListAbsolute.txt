@@ -1,0 +1,444 @@
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Demo.dll.config
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Demo.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Demo.pdb
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\csc.exe
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\csc.exe.config
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\csc.rsp
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\csi.exe
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\csi.rsp
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\System.AppContext.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\System.Collections.Immutable.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\System.IO.FileSystem.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\System.Reflection.Metadata.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\vbc.exe
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\vbc.exe.config
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\vbc.rsp
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\VBCSCompiler.exe
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\roslyn\VBCSCompiler.exe.config
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Antlr3.Runtime.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Microsoft.Web.Infrastructure.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Newtonsoft.Json.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Helpers.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Mvc.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Optimization.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Razor.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.WebPages.Deployment.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.WebPages.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.WebPages.Razor.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\WebGrease.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Helpers.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Mvc.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Optimization.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.Razor.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.WebPages.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.WebPages.Deployment.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\System.Web.WebPages.Razor.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Newtonsoft.Json.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Antlr3.Runtime.pdb
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\obj\Debug\Demo.csproj.AssemblyReference.cache
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\obj\Debug\Demo.csproj.Up2Date
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\obj\Debug\Demo.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\obj\Debug\Demo.pdb
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\EntityFramework.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\EntityFramework.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Demo.dll.config
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Demo.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Demo.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\csc.exe
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\csc.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\csc.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\csi.exe
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\csi.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\System.AppContext.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\vbc.exe
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\vbc.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\vbc.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\VBCSCompiler.exe
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Antlr3.Runtime.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\EntityFramework.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Newtonsoft.Json.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Helpers.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Mvc.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Optimization.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Razor.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.WebPages.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.WebPages.Razor.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\WebGrease.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\EntityFramework.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Helpers.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Mvc.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Optimization.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.Razor.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.WebPages.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\System.Web.WebPages.Razor.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Newtonsoft.Json.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Antlr3.Runtime.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\obj\Debug\Demo.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\obj\Debug\Demo.csproj.Up2Date
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\obj\Debug\Demo.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\obj\Debug\Demo.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\EntityFramework.SqlServer.dll
+C:\Users\ADMIN\OneDrive\Máy tính\1\Demo\Demo\bin\EntityFramework.SqlServer.xml
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\EntityFramework.SqlServer.dll
+D:\BAI TAP\LT_Web\Demo\Demo\Demo\bin\EntityFramework.SqlServer.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\obj\Debug\Demo.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Demo.dll.config
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Demo.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Demo.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\csc.exe
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\csc.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\csc.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\csi.exe
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\csi.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\csi.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Buffers.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Memory.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\vbc.exe
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\vbc.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\vbc.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\VBCSCompiler.exe
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Antlr3.Runtime.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\EntityFramework.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\EntityFramework.SqlServer.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Configuration.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Http.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Logging.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Options.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Newtonsoft.Json.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\PayOS.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Buffers.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.ComponentModel.Annotations.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.IO.Pipelines.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Memory.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Numerics.Vectors.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Text.Encodings.Web.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Text.Json.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Helpers.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Mvc.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Optimization.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Razor.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.WebPages.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.WebPages.Razor.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\WebGrease.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\EntityFramework.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\EntityFramework.SqlServer.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Configuration.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Http.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Logging.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Options.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Newtonsoft.Json.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\PayOS.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Buffers.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.IO.Pipelines.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Memory.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Numerics.Vectors.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Text.Encodings.Web.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Text.Json.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Helpers.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Mvc.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Razor.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.WebPages.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.WebPages.Razor.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\System.Web.Optimization.xml
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\bin\Antlr3.Runtime.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\obj\Debug\Demo.csproj.Up2Date
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\obj\Debug\Demo.dll
+C:\Users\ADMIN\OneDrive\Máy tính\Demo\Demo\obj\Debug\Demo.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Demo.dll.config
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Demo.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Demo.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\csc.exe
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\csc.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\csc.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\csi.exe
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\csi.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\csi.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Buffers.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Memory.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\vbc.exe
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\vbc.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\vbc.rsp
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\VBCSCompiler.exe
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Antlr3.Runtime.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\EntityFramework.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\EntityFramework.SqlServer.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Configuration.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Http.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Logging.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Options.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Newtonsoft.Json.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\PayOS.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Buffers.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.ComponentModel.Annotations.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.IO.Pipelines.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Memory.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Numerics.Vectors.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Text.Encodings.Web.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Text.Json.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Helpers.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Mvc.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Optimization.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Razor.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.WebPages.Deployment.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.WebPages.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.WebPages.Razor.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\WebGrease.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\EntityFramework.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\EntityFramework.SqlServer.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Configuration.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Http.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Logging.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Options.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Newtonsoft.Json.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\PayOS.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Buffers.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.IO.Pipelines.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Memory.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Numerics.Vectors.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Text.Encodings.Web.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Text.Json.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Helpers.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Mvc.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Razor.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.WebPages.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.WebPages.Deployment.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.WebPages.Razor.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\System.Web.Optimization.xml
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\bin\Antlr3.Runtime.pdb
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\obj\Debug\Demo.csproj.AssemblyReference.cache
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\obj\Debug\Demo.csproj.Up2Date
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\obj\Debug\Demo.dll
+C:\Users\ADMIN\OneDrive\Máy tính\DemoLTW\Demo\obj\Debug\Demo.pdb
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\obj\Debug\Demo.csproj.AssemblyReference.cache
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\obj\Debug\Demo.csproj.CoreCompileInputs.cache
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\obj\Debug\Demo.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\obj\Debug\Demo.pdb
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Demo.dll.config
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Demo.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Demo.pdb
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\csc.exe
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\csc.exe.config
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\csc.rsp
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\csi.exe
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\csi.exe.config
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\csi.rsp
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Buffers.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Memory.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\vbc.exe
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\vbc.exe.config
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\vbc.rsp
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\VBCSCompiler.exe
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Antlr3.Runtime.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\EntityFramework.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\EntityFramework.SqlServer.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Configuration.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Http.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Logging.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Options.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Newtonsoft.Json.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\PayOS.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Buffers.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.ComponentModel.Annotations.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.IO.Pipelines.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Memory.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Numerics.Vectors.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Text.Encodings.Web.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Text.Json.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Helpers.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Mvc.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Optimization.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Razor.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.WebPages.Deployment.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.WebPages.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.WebPages.Razor.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\WebGrease.dll
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\EntityFramework.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\EntityFramework.SqlServer.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Configuration.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Configuration.Abstractions.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Configuration.Binder.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Http.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Logging.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Options.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Newtonsoft.Json.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\PayOS.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Buffers.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.IO.Pipelines.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Memory.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Numerics.Vectors.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Text.Encodings.Web.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Text.Json.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Helpers.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Mvc.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Razor.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.WebPages.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.WebPages.Deployment.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.WebPages.Razor.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\System.Web.Optimization.xml
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\bin\Antlr3.Runtime.pdb
+C:\Users\lequo\Downloads\DemoLTWeb\DemoLTWeb\Demo\obj\Debug\Demo.csproj.Up2Date

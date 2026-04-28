@@ -1,0 +1,50 @@
+﻿@model Demo.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Xác nhận Xóa Khách Hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow-sm border-0 rounded-4 p-4">
+    <h3 class="fw-bold text-danger mb-3">Xác nhận Xóa</h3>
+
+    <div class="alert alert-warning border-0 shadow-sm">
+        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+        Bạn có chắc chắn muốn xóa khách hàng này không? <br />
+        Hành động này <b>không thể hoàn tác</b> và có thể xóa luôn lịch sử đặt sân của họ.
+    </div>
+
+    <div class="mt-4">
+        <h4 class="fw-bold text-primary">@Model.HoTen</h4>
+        <hr />
+
+        <dl class="row">
+            <dt class="col-sm-3 text-muted">Mã Khách Hàng</dt>
+            <dd class="col-sm-9 fw-bold">@Model.MaKH</dd>
+
+            <dt class="col-sm-3 text-muted">Email</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+
+            <dt class="col-sm-3 text-muted">Số điện thoại</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.SDT)</dd>
+
+            <dt class="col-sm-3 text-muted">Ngày tạo</dt>
+            <dd class="col-sm-9">
+                @(Model.NgayTao.HasValue ? Model.NgayTao.Value.ToString("dd/MM/yyyy HH:mm") : "-")
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions no-color mt-4">
+                <button type="submit" class="btn btn-danger px-4">
+                    <i class="fa-solid fa-trash-can"></i> Xóa Vĩnh Viễn
+                </button>
+                <a href="@Url.Action("ManageUsers", "Admin")" class="btn btn-secondary ms-2">
+                    Quay lại
+                </a>
+            </div>
+        }
+    </div>
+</div>

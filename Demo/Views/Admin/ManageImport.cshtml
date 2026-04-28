@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Demo.Models.PhieuNhapDichVu>
+
+@{
+    ViewBag.Title = "Quản Lý Phiếu Nhập Kho";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold">
+            <i class="fa-solid fa-warehouse me-2"></i> Quản lý Phiếu Nhập Kho
+        </h4>
+        <a href="@Url.Action("CreateImport","Admin")"
+           class="btn btn-primary">
+            <i class="fa-solid fa-plus me-1"></i> Nhập kho mới
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <div class="card shadow-sm border-0 rounded-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Mã Phiếu</th>
+                            <th>Ngày nhập</th>
+                            <th>Người nhập</th>
+                            <th>Ghi chú</th>
+                            <th class="text-center">Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">
+                                    Chưa có phiếu nhập nào
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var p in Model)
+                            {
+                                <tr>
+                                    <td class="fw-bold text-primary">@p.MaPhieuNhap</td>
+                                    <td>@(p.NgayNhap.HasValue ? p.NgayNhap.Value.ToString("dd/MM/yyyy") : "")</td>
+                                    <td>@p.NguoiNhap</td>
+                                    <td>@p.GhiChu</td>
+                                    <td class="text-center">
+                                        <a href="@Url.Action("ImportDetail","Admin", new { id = p.MaPhieuNhap })"
+                                           class="btn btn-outline-primary btn-sm">
+                                            <i class="fa-solid fa-eye"></i> Xem
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,212 @@
+﻿@model IEnumerable<Demo.Models.DatSan>
+
+@{
+    ViewBag.Title = "Báo Cáo Doanh Thu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var dictKhach = ViewBag.TenKhachHang as Dictionary<int, string>;
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="container-fluid p-4">
+    <h2 class="mb-4 fw-bold text-primary"><i class="fa-solid fa-chart-line me-2"></i> Báo Cáo Doanh Thu</h2>
+
+    <form method="get" class="row mb-4 g-3 bg-white p-3 rounded shadow-sm">
+        <div class="col-md-3">
+            <label class="fw-bold small text-muted">Từ ngày</label>
+            <input type="date" name="fromDate" class="form-control" value="@Request.QueryString["fromDate"]" />
+        </div>
+        <div class="col-md-3">
+            <label class="fw-bold small text-muted">Đến ngày</label>
+            <input type="date" name="toDate" class="form-control" value="@Request.QueryString["toDate"]" />
+        </div>
+        <div class="col-md-2">
+            <label class="fw-bold small text-muted">Tháng</label>
+            <input type="number" name="month" min="1" max="12" class="form-control" placeholder="1-12" value="@Request.QueryString["month"]" />
+        </div>
+        <div class="col-md-2">
+            <label class="fw-bold small text-muted">Năm</label>
+            <input type="number" name="year" class="form-control" placeholder="VD: 2025" value="@Request.QueryString["year"]" />
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+            <button class="btn btn-primary w-100 fw-bold"><i class="fa-solid fa-filter me-1"></i> Xem báo cáo</button>
+        </div>
+    </form>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3 shadow border-0">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase opacity-75">Tổng Doanh Thu</h6>
+                    <h2 class="fw-bold">@String.Format("{0:N0} đ", ViewBag.TotalRevenue ?? 0)</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3 shadow border-0">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase opacity-75">Doanh Thu Tiền Sân</h6>
+                    <h2 class="fw-bold">@String.Format("{0:N0} đ", ViewBag.FieldRevenue ?? 0)</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-dark bg-warning mb-3 shadow border-0">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase opacity-75">Doanh Thu Dịch Vụ</h6>
+                    <h2 class="fw-bold">@String.Format("{0:N0} đ", ViewBag.ServiceRevenue ?? 0)</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-8">
+            <div class="card shadow border-0">
+                <div class="card-header bg-white fw-bold py-3">
+                    <i class="fa-solid fa-arrow-trend-up me-2 text-success"></i> Xu hướng doanh thu theo ngày
+                </div>
+                <div class="card-body">
+                    <div style="height: 350px;">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0">
+                <div class="card-header bg-white fw-bold py-3">
+                    <i class="fa-solid fa-pie-chart me-2 text-warning"></i> Tỷ trọng nguồn thu
+                </div>
+                <div class="card-body">
+                    <div style="height: 350px; display: flex; justify-content: center;">
+                        <canvas id="sourceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow border-0">
+        <div class="card-header bg-primary text-white fw-bold py-3">
+            <i class="fa-solid fa-list me-2"></i> Chi tiết các đơn đã thanh toán
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th class="ps-4">Mã Đặt</th>
+                        <th>Ngày Đặt</th>
+                        <th>Khách Hàng</th>
+                        <th class="text-end">Tiền Sân</th>
+                        <th class="text-end pe-4">Trạng Thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 fw-bold text-primary">@item.MaDat</td>
+                                <td>@item.NgayDat.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    @{
+                                        string tenKhach = "Khách vãng lai";
+                                        if (item.MaUser != null && dictKhach != null && dictKhach.ContainsKey(item.MaUser.Value))
+                                        {
+                                            tenKhach = dictKhach[item.MaUser.Value];
+                                        }
+                                    }
+                                    <span class="fw-bold text-dark">@tenKhach</span>
+                                </td>
+                                <td class="text-end fw-bold">@String.Format("{0:N0}", item.TongTien)</td>
+                                <td class="text-end pe-4">
+                                    <span class="badge bg-success">@item.TrangThai</span>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center py-4 text-muted">
+                                Không có dữ liệu doanh thu trong khoảng thời gian này.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var labels = @Html.Raw(Json.Encode(ViewBag.ChartLabels ?? new List<string>()));
+        var values = @Html.Raw(Json.Encode(ViewBag.ChartValues ?? new List<decimal>()));
+        var fieldRev = @Html.Raw(Json.Encode(ViewBag.FieldRevenue ?? 0));
+        var serviceRev = @Html.Raw(Json.Encode(ViewBag.ServiceRevenue ?? 0));
+
+        var ctxLine = document.getElementById('revenueChart');
+        if (ctxLine) {
+            new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Doanh thu (VNĐ)',
+                        data: values,
+                        borderColor: '#198754',
+                        backgroundColor: 'rgba(25, 135, 84, 0.15)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { callback: function(value) { return value.toLocaleString('vi-VN'); } }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) { return context.parsed.y.toLocaleString('vi-VN') + ' đ'; }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        var ctxPie = document.getElementById('sourceChart');
+        if (ctxPie) {
+            var pieData = [fieldRev, serviceRev];
+            var pieColors = ['#0dcaf0', '#ffc107'];
+            if(fieldRev === 0 && serviceRev === 0) { pieData = [1]; pieColors = ['#e9ecef']; }
+
+            new Chart(ctxPie, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Tiền Sân', 'Tiền Dịch Vụ'],
+                    datasets: [{
+                        data: pieData,
+                        backgroundColor: pieColors,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+    });
+</script>

@@ -1,0 +1,644 @@
+﻿@model Demo.ViewModels.TrainerSearchViewModel
+@{
+    ViewBag.Title = "Tìm Huấn Luyện Viên";
+    var trainers = ViewBag.Trainers as List<Demo.Models.Trainer>;
+    var tatCaMon = ViewBag.TatCaMonTheThao as List<Demo.Models.LoaiTheThao>;
+}
+
+
+<style>
+    /* ================================== */
+    /* ==== CSS CẤU TRÚC & BACKGROUND ==== */
+    /* ================================== */
+    body {
+        background-color: #f7f8f8; /* Nền xám nhạt */
+    }
+
+    .filter-section {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 25px;
+        background-color: #fff; /* Nền trắng */
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    /* ================================== */
+    /* ==== THANH TÌM KIẾM ==== */
+    /* ================================== */
+    .search-bar-container {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+        .search-bar-container input {
+            width: 100%;
+            padding: 14px 20px 14px 50px;
+            border-radius: 30px;
+            border: 1px solid #e0e0e0;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: all 0.3s;
+        }
+
+            .search-bar-container input:focus {
+                background-color: #fff;
+                border-color: #28a745;
+                box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.1);
+                outline: none;
+            }
+
+        .search-bar-container .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+    /* ================================== */
+    /* ==== LƯỚI MÔN THỂ THAO ==== */
+    /* ================================== */
+    .sport-filter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 15px;
+    }
+
+    .sport-filter-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 10px;
+        background: #fff;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #555;
+        font-weight: 600;
+        font-size: 0.85rem;
+        border: 1px solid #eee;
+        transition: all 0.2s ease;
+        min-height: 110px;
+    }
+
+        .sport-filter-item i {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            background-color: #f5f5f5;
+            color: #666;
+            margin-bottom: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .sport-filter-item:hover {
+            border-color: #28a745;
+            color: #28a745;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+            .sport-filter-item:hover i {
+                background-color: #e8f5e9;
+                color: #28a745;
+            }
+        /* Active State */
+        .sport-filter-item.active {
+            border-color: #28a745;
+            background-color: #f0fff4;
+            color: #28a745;
+        }
+
+            .sport-filter-item.active i {
+                background-color: #28a745;
+                color: #fff;
+            }
+
+    /* ================================== */
+    /* ==== BỘ LỌC NÂNG CAO ==== */
+    /* ================================== */
+    .advanced-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        padding-top: 20px;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 25px;
+    }
+
+    .filter-dropdown .btn {
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 6px 16px;
+        color: #555;
+    }
+
+        .filter-dropdown .btn:hover {
+            background-color: #f8f8f8;
+        }
+
+    .filter-check {
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .form-check-input {
+        margin-top: 0;
+        cursor: pointer;
+    }
+
+        .form-check-input:checked {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+    /* ================================== */
+    /* ==== CARD HLV (GIAO DIỆN MỚI) ==== */
+    /* ================================== */
+    .trainer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        padding: 30px 0;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .trainer-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #f0f0f0;
+    }
+
+        .trainer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: #333;
+        }
+
+    .trainer-card-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 220px;
+    }
+
+    .trainer-card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: #f0f0f0;
+    }
+
+    /* Tag: TRAINER / ACADEMY */
+    .image-tag {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+        .image-tag i {
+            font-size: 0.8rem;
+        }
+
+        .image-tag.type-trainer {
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .image-tag.type-academy {
+            background-color: #2f3e3d;
+            color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Tag: New */
+        .image-tag.new {
+            top: 15px;
+            right: 15px;
+            left: auto;
+            background-color: #2f3e3d;
+            color: #fff;
+        }
+
+    .trainer-card-content {
+        padding: 20px;
+        flex-grow: 1;
+    }
+
+    .trainer-card-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: #2f3e3d;
+    }
+
+    .trainer-card-location {
+        font-size: 0.85rem;
+        color: #888;
+        margin-bottom: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Audience */
+    .trainer-audience {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: #00a651;
+        font-weight: 600;
+    }
+
+    /* Footer: Button */
+    .trainer-card-footer-new {
+        padding: 0 20px 20px 20px;
+        text-align: center;
+    }
+
+    .btn-connect {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #f0f0f0;
+        background-color: #fff;
+        border-radius: 30px;
+        text-align: center;
+        color: #333;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+    }
+
+        .btn-connect:hover {
+            background-color: #fff;
+            border-color: #28a745;
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        .btn-connect i {
+            margin-left: 5px;
+            color: #ff4081;
+        }
+
+    .trainer-interest {
+        display: block;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #999;
+        margin-top: 12px;
+        font-weight: 500;
+    }
+
+
+    /* ================================== */
+    /* ==== CÁC BANNER QUẢNG CÁO ==== */
+    /* ================================== */
+    .trainer-promo-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px 50px;
+        background: #fff;
+        border-radius: 20px;
+        margin-top: 20px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+    }
+
+    .promo-card-content h4 {
+        font-weight: 800;
+        font-size: 1.5rem;
+        color: #2f3e3d;
+        margin-bottom: 10px;
+    }
+
+    .promo-card-content p {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    .promo-card-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn-promo-main {
+        background-color: #00a651;
+        color: #fff;
+        font-weight: 700;
+        padding: 12px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+
+        .btn-promo-main:hover {
+            background-color: #008c44;
+            color: #fff;
+        }
+
+    .btn-promo-secondary {
+        background-color: #fff;
+        color: #333;
+        font-weight: 700;
+        padding: 12px 25px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+        .btn-promo-secondary:hover {
+            background-color: #f9f9f9;
+            color: #000;
+            border-color: #ccc;
+        }
+
+    .app-download-banner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 35px 50px;
+        background: #00a651;
+        border-radius: 20px;
+        color: #fff;
+        margin-top: 40px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .app-banner-text {
+        font-size: 1.6rem;
+        font-weight: 700;
+        z-index: 2;
+    }
+
+    .app-banner-stores {
+        z-index: 2;
+    }
+
+        .app-banner-stores img {
+            height: 45px;
+            margin-left: 12px;
+            transition: transform 0.2s;
+        }
+
+            .app-banner-stores img:hover {
+                transform: scale(1.05);
+            }
+</style>
+
+<div class="container mt-4" style="margin-top: 20px;">
+
+    <h2 class="mb-4 fw-bold" style="color: #2f3e3d;">Sports Trainers in Your City</h2>
+
+    <div class="filter-section">
+
+        @using (Html.BeginForm("Index", "Trainer", FormMethod.Get))
+        {
+            <div class="search-bar-container">
+                <i class="fa fa-search search-icon"></i>
+                @Html.TextBox("searchTuKhoa", Model.SearchTuKhoa, new { @class = "form-control", placeholder = "Search for coaches / academies..." })
+            </div>
+            <input type="submit" style="display:none;" />
+        }
+
+        <h6 class="mb-3 fw-bold text-muted">Hey! What're you looking to level up on?</h6>
+        <div class="sport-filter-grid">
+
+            <a href="@Url.Action("Index", "Trainer", new { searchTuKhoa = Model.SearchTuKhoa, mon = "" })"
+               class="sport-filter-item @(string.IsNullOrEmpty(Model.MonHienTai) ? "active" : "")">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>All</span>
+            </a>
+
+            @foreach (var mon in Model.TatCaMonTheThao)
+            {
+                <a href="@Url.Action("Index", "Trainer", new { searchTuKhoa = Model.SearchTuKhoa, mon = mon.TenLoai })"
+                   class="sport-filter-item @(Model.MonHienTai == mon.TenLoai ? "active" : "")">
+                    @{
+                        string iconClass = "fa-solid fa-person-running";
+                        string engName = mon.TenLoai; // Giá trị gốc
+
+                        // Mapping tên tiếng Việt sang tiếng Anh hiển thị
+                        switch (mon.TenLoai)
+                        {
+                            case "Bóng đá": iconClass = "fa-solid fa-futbol"; engName = "Football"; break;
+                            case "Cầu lông": iconClass = "fa-solid fa-table-tennis-paddle-ball"; engName = "Badminton"; break;
+                            case "Tennis": iconClass = "fa-solid fa-baseball"; engName = "Tennis"; break;
+                            case "Bóng rổ": iconClass = "fa-solid fa-basketball"; engName = "Basketball"; break;
+                            case "Bơi lội": iconClass = "fa-solid fa-person-swimming"; engName = "Swimming"; break;
+                        }
+                    }
+                    <i class="@iconClass"></i>
+                    <span>@engName</span>
+                </a>
+            }
+        </div>
+
+        <div class="advanced-filter-bar">
+
+            <div class="dropdown filter-dropdown">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Services: @(string.IsNullOrEmpty(Model.Service) ? "All" : (Model.Service == "Dạy 1-1" ? "1-on-1" : "Group"))
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item filter-change" data-filter="service" data-value="" href="#">All</a></li>
+                    <li><a class="dropdown-item filter-change" data-filter="service" data-value="Dạy 1-1" href="#">1-on-1</a></li>
+                    <li><a class="dropdown-item filter-change" data-filter="service" data-value="Dạy nhóm" href="#">Group</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown filter-dropdown">
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Age: @(string.IsNullOrEmpty(Model.AgeGroup) ? "All" : (Model.AgeGroup == "Chỉ trẻ em" ? "Kids" : (Model.AgeGroup == "Chỉ người lớn" ? "Adults" : "Adults & Kids")))
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item filter-change" data-filter="ageGroup" data-value="" href="#">All</a></li>
+                    <li><a class="dropdown-item filter-change" data-filter="ageGroup" data-value="Chỉ trẻ em" href="#">Kids</a></li>
+                    <li><a class="dropdown-item filter-change" data-filter="ageGroup" data-value="Chỉ người lớn" href="#">Adults</a></li>
+                    <li><a class="dropdown-item filter-change" data-filter="ageGroup" data-value="Mọi lứa tuổi" href="#">Adults & Kids</a></li>
+                </ul>
+            </div>
+
+            <div class="form-check filter-check">
+                <input class="form-check-input filter-change" type="checkbox" data-filter="isAcademy" data-value="false" id="coachOnlyCheck"
+                       @(Model.IsAcademy == false ? "checked" : "")>
+                <label class="form-check-label" for="coachOnlyCheck">Coach Only</label>
+            </div>
+
+            <div class="form-check filter-check">
+                <input class="form-check-input filter-change" type="checkbox" data-filter="isAcademy" data-value="true" id="academyOnlyCheck"
+                       @(Model.IsAcademy == true ? "checked" : "")>
+                <label class="form-check-label" for="academyOnlyCheck">Academy Only</label>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="trainer-grid">
+        @foreach (var trainer in Model.Trainers)
+        {
+            <a href="@Url.Action("Details", "Trainer", new { id = trainer.TrainerId })" class="trainer-card">
+
+                <div class="trainer-card-image-wrapper">
+                    <img src="@(string.IsNullOrEmpty(trainer.AnhDaiDienUrl) ? "/Content/images/default-avatar.png" : trainer.AnhDaiDienUrl)"
+                         alt="@trainer.HoTen" class="trainer-card-image" />
+
+                    @if (trainer.IsAcademy == true)
+                    {
+                        <span class="image-tag type-academy">
+                            <i class="fa-solid fa-school"></i> &nbsp; ACADEMY
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="image-tag type-trainer">
+                            <i class="fa-solid fa-user"></i> &nbsp; TRAINER
+                        </span>
+                    }
+
+
+                    <span class="image-tag new">★ New</span>
+                </div>
+
+                <div class="trainer-card-content">
+                    <h5 class="trainer-card-name">@trainer.HoTen</h5>
+                    <p class="trainer-card-location">@trainer.KhuVuc</p>
+
+                    <div class="trainer-audience">
+                        <i class="fa-solid fa-users"></i>
+                        @{
+                            string displayAge = "Adults & Kids";
+                            if (trainer.AgeGroup == "Chỉ trẻ em") { displayAge = "Kids Only"; }
+                            else if (trainer.AgeGroup == "Chỉ người lớn") { displayAge = "Adults Only"; }
+                        }
+                        <span>@displayAge</span>
+                    </div>
+                </div>
+
+                <div class="trainer-card-footer-new">
+                    <div class="btn-connect">INSTANT CONNECT <i class="fa-solid fa-bolt"></i></div>
+
+                    @{ var interestCount = (trainer.TrainerId % 7) + 2; }
+                    <span class="trainer-interest">@interestCount showed Interest</span>
+                </div>
+            </a>
+        }
+    </div>
+
+    <div class="trainer-promo-card">
+        <div class="promo-card-content">
+            <h4>Are you a trainer / Academy?</h4>
+            <p>List your services with us to reach more players and grow your business!</p>
+        </div>
+        <div class="promo-card-buttons">
+            <a href="#" class="btn-promo-main">LIST WITH US</a>
+            <a href="#" class="btn-promo-secondary">FAQs</a>
+        </div>
+    </div>
+
+    <div class="app-download-banner">
+        <span class="app-banner-text">
+            Get the Playo app for a seamless experience!
+        </span>
+        <div class="app-banner-stores">
+            <a href="#">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store">
+            </a>
+            <a href="#">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Apple App Store">
+            </a>
+        </div>
+    </div>
+
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            function getCurrentFilters() {
+                var urlParams = new URLSearchParams(window.location.search);
+                return {
+                    searchTuKhoa: urlParams.get('searchTuKhoa') || '@(Model.SearchTuKhoa ?? "")',
+                    mon: urlParams.get('mon') || '@(Model.MonHienTai ?? "")',
+                    isAcademy: urlParams.get('isAcademy') || '@(Model.IsAcademy.HasValue ? Model.IsAcademy.ToString().ToLower() : "")',
+                    ageGroup: urlParams.get('ageGroup') || '@(Model.AgeGroup ?? "")',
+                    service: urlParams.get('service') || '@(Model.Service ?? "")'
+                };
+            }
+
+            $('.filter-change[data-filter]').click(function (e) {
+                e.preventDefault();
+                var filterType = $(this).data('filter');
+                var filterValue = $(this).data('value'); 
+                var filters = getCurrentFilters();
+                filters[filterType] = filterValue;
+
+                if (filterType === 'isAcademy') {
+                     var isChecked = $('#' + $(this).attr('id')).is(':checked');
+                     if (!isChecked) filters.isAcademy = '';
+                }
+
+                var newUrl = '@Url.Action("Index", "Trainer")?' + $.param(filters);
+                window.location.href = newUrl;
+            });
+
+            $('input.filter-change[type="checkbox"]').change(function() {
+                var filterType = $(this).data('filter');
+                var filterValue = $(this).data('value');
+                var isChecked = $(this).is(':checked');
+                var filters = getCurrentFilters();
+
+                if (!isChecked) {
+                    filters.isAcademy = '';
+                } else {
+                    filters.isAcademy = filterValue;
+                    if (filterValue === 'true') $('#coachOnlyCheck').prop('checked', false);
+                    if (filterValue === 'false') $('#academyOnlyCheck').prop('checked', false);
+                }
+                var newUrl = '@Url.Action("Index", "Trainer")?' + $.param(filters);
+                window.location.href = newUrl;
+            });
+        });
+    </script>
+}

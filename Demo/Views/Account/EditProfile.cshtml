@@ -1,0 +1,163 @@
+﻿@model Demo.Models.KHACHHANG
+@{
+    ViewBag.Title = "Chỉnh sửa hồ sơ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var avatarUrl = string.IsNullOrEmpty(Model.AnhDaiDien) ? "/Content/images/default-avatar.png" : Model.AnhDaiDien;
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+    .profile-layout-wrapper {
+        display: flex;
+        max-width: 1200px;
+        margin: 40px auto;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .profile-sidebar {
+        flex: 0 0 250px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        overflow: hidden;
+    }
+
+    .user-info-card {
+        text-align: center;
+        padding: 20px 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .user-info-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+    .nav-link-custom {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        color: #666;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+        .nav-link-custom.active {
+            background-color: #00c853;
+            color: #fff;
+            border-left: 4px solid #00c853;
+        }
+
+    .bookings-content {
+        flex-grow: 1;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        padding: 30px;
+    }
+
+    .edit-avatar-preview {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #f0f0f0;
+    }
+</style>
+
+<div class="profile-layout-wrapper">
+    <div class="profile-sidebar">
+        <div class="user-info-card">
+            <img src="@avatarUrl" alt="Avatar" />
+            <h5 class="fw-bold">@Model.HoTen</h5>
+            <p class="small text-success">@Model.Email</p>
+        </div>
+        <div class="list-group list-group-flush">
+            <a href="@Url.Action("MyBookings", "Bookings")" class="nav-link-custom">
+                <i class="fa-solid fa-clipboard-list"></i> All Bookings
+            </a>
+            <a href="#" class="nav-link-custom active">
+                <i class="fa-solid fa-user-edit"></i> Edit Profile
+            </a>
+            <a href="@Url.Action("MyBookings", "Bookings")" class="nav-link-custom">
+                <i class="fa-solid fa-comment-dots"></i> Feedback
+            </a>
+        </div>
+    </div>
+
+    <div class="bookings-content">
+        <h4 class="fw-bold mb-4">Edit Profile</h4>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="mb-4 text-center text-md-start">
+                    <img id="previewImg" src="@avatarUrl" class="edit-avatar-preview mb-3" />
+                    <div>
+                        <input type="file" id="fileInput" class="d-none" accept="image/*" />
+                        <button class="btn btn-sm btn-outline-success fw-bold px-3 rounded-pill"
+                                onclick="document.getElementById('fileInput').click()">
+                            <i class="fa-solid fa-camera me-2"></i>Change Photo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Full Name</label>
+                    <input type="text" id="editHoTen" class="form-control rounded-3 py-2" value="@Model.HoTen" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Mobile Number</label>
+                    <input type="text" id="editSDT" class="form-control rounded-3 py-2" value="@Model.SDT" />
+                </div>
+
+                <div id="editMsg" class="mb-3 small fw-bold"></div>
+
+                <button id="btnSaveProfile" class="btn btn-success px-5 py-2 rounded-pill fw-bold">
+                    SAVE CHANGES
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('fileInput').onchange = function (e) {
+            if (e.target.files[0]) {
+                let reader = new FileReader();
+                reader.onload = (ev) => document.getElementById('previewImg').src = ev.target.result;
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        };
+
+        document.getElementById('btnSaveProfile').onclick = async () => {
+            const msg = document.getElementById('editMsg');
+            msg.innerText = "⏳ Updating...";
+
+            let formData = new FormData();
+            formData.append("HoTen", document.getElementById('editHoTen').value);
+            formData.append("SDT", document.getElementById('editSDT').value);
+            formData.append("Photo", document.getElementById('fileInput').files[0]);
+
+            try {
+                const res = await fetch("/Account/UpdateProfile", { method: "POST", body: formData });
+                const data = await res.json();
+                if (data.success) {
+                    msg.innerHTML = "<span class='text-success'>✅ Cập nhật thành công!</span>";
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    msg.innerHTML = "<span class='text-danger'>❌ " + data.message + "</span>";
+                }
+            } catch (err) {
+                msg.innerHTML = "<span class='text-danger'>❌ Lỗi kết nối!</span>";
+            }
+        };
+    </script>
+}

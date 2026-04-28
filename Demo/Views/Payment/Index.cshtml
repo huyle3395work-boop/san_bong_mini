@@ -1,0 +1,37 @@
+﻿@model Demo.Models.DatSan
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<div class="container py-5">
+    <div class="card shadow-sm p-4">
+        <h3 class="fw-bold mb-4">Thông tin thanh toán đơn: @Model.MaDat</h3>
+        <p><strong>Sân:</strong> @Model.MaSan</p>
+        <p><strong>Ngày tập:</strong> @Model.NgayDat.ToString("dd/MM/yyyy")</p>
+        <h4 class="text-danger fw-bold">Tổng tiền: @String.Format("{0:N0}", Model.TongTien) VNĐ</h4>
+
+        <hr />
+        <h5 class="mb-3">Chọn phương thức thanh toán:</h5>
+        <div class="row g-3">
+            <div class="col-md-6">
+                @using (Html.BeginForm("PayByCash", "Payment", new { maDat = Model.MaDat }, FormMethod.Post))
+                {
+                    <button type="submit" class="btn btn-outline-primary w-100 p-4">
+                        <i class="fa-solid fa-money-bill-wave fa-2x mb-2"></i><br />
+                        <strong>Tiền mặt tại quầy</strong>
+                    </button>
+                }
+            </div>
+            <div class="col-md-6">
+                @using (Html.BeginForm("PayByQR", "Payment", new { maDat = Model.MaDat }, FormMethod.Post))
+                {
+                    <button type="submit" class="btn btn-outline-success w-100 p-4">
+                        <i class="fa-solid fa-qrcode fa-2x mb-2"></i><br />
+                        <strong>Thanh toán qua VietQR</strong>
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,394 @@
+﻿@model Demo.ViewModels.MyBookingsViewModel
+
+@{
+    ViewBag.Title = "My Bookings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var cultureInfo = new System.Globalization.CultureInfo("vi-VN");
+
+    var avatarUrl = (ViewBag.AvatarUrl as string) ?? "/Content/images/default-avatar.png";
+    var userEmail = Session["UserEmail"] as string;
+    var userName = (ViewBag.UserName as string) ?? userEmail ?? "Guest";
+    var Hoten = (ViewBag.HoTen as string);
+
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+    body {
+        background-color: #f7f8f8;
+    }
+
+    .profile-layout-wrapper {
+        display: flex;
+        max-width: 1200px;
+        margin: 40px auto;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .profile-sidebar {
+        flex: 0 0 250px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .user-info-card {
+        text-align: center;
+        padding: 20px 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .user-info-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .user-info-card h5 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .user-info-card p {
+            font-size: 0.85rem;
+            color: #008c44;
+            margin: 0;
+        }
+
+    .nav-link-custom {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        color: #666;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.2s;
+    }
+
+        .nav-link-custom i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .nav-link-custom.active, .nav-link-custom:hover {
+            background-color: #e6f9f0;
+            color: #00c853;
+            border-left: 4px solid #00c853;
+        }
+
+        .nav-link-custom.active {
+            background-color: #00c853;
+            color: #fff;
+            border-left: 4px solid #00c853;
+        }
+
+    .bookings-content {
+        flex-grow: 1;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        padding: 25px;
+    }
+
+    .nav-pills-custom .nav-link {
+        color: #666;
+        border-radius: 8px;
+        padding: 8px 15px;
+        font-weight: 600;
+        border: 1px solid #f0f0f0;
+        margin-right: 10px;
+    }
+
+        .nav-pills-custom .nav-link.active {
+            background-color: #00c853;
+            color: #fff;
+            border-color: #00c853;
+        }
+
+    .booking-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 20px;
+        border: 1px solid #eee;
+        margin-bottom: 20px;
+    }
+
+    .status-badge {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+
+    .status-confirmed {
+        background-color: #d4f8d4;
+        color: #008c44;
+    }
+
+    .status-pending {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+
+    .status-cancelled {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+
+    .booking-info h5 {
+        font-weight: 700;
+        color: #2f3e3d;
+    }
+
+    .booking-info p {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 50px 20px;
+        color: #999;
+    }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+</style>
+
+<div class="profile-layout-wrapper">
+
+    <div class="profile-sidebar">
+
+        <div class="user-info-card">
+            <img src="@avatarUrl" alt="@userName" />
+            <h5>@Hoten</h5>
+            <p>@(userEmail ?? "Not signed in")</p>
+        </div>
+
+        <div class="list-group list-group-flush border-0">
+            <a href="@Url.Action("MyBookings", "Bookings")" class="nav-link-custom active">
+                <i class="fa-solid fa-clipboard-list"></i> All Bookings
+            </a>
+            <a href="@Url.Action("EditProfile", "Account")" class="nav-link-custom">
+                <i class="fa-solid fa-user-edit"></i> Edit Profile
+            </a>
+            <a href="@Url.Action("Feedback", "Account")" class="nav-link-custom">
+                <i class="fa-solid fa-comment-dots"></i> Feedback
+            </a>
+        </div>
+    </div>
+
+    <div class="bookings-content">
+        <div class="booking-header">
+            <h4 class="fw-bold mb-1">All Bookings</h4>
+            <p class="text-muted">You have @Model.TotalBookingsCount total bookings.</p>
+        </div>
+
+        <ul class="nav nav-pills nav-pills-custom mb-4" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-upcoming-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming" type="button">
+                    Upcoming (@Model.UpcomingBookings.Count)
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-history-tab" data-bs-toggle="pill" data-bs-target="#pills-history" type="button">
+                    History (@Model.PastBookings.Count)
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+
+            <div class="tab-pane fade show active" id="pills-upcoming" role="tabpanel">
+                @if (Model.UpcomingBookings.Any())
+                {
+                    foreach (var booking in Model.UpcomingBookings)
+                    {
+                        <div class="booking-card d-flex justify-content-between align-items-start">
+                            <div class="booking-info">
+                                <span class="status-badge status-confirmed">@booking.TrangThai</span>
+                                <h5 class="mt-2">@booking.SanTheThao.TenSan</h5>
+                                <p><i class="fa-solid fa-calendar-day me-2"></i> @booking.NgayDat.ToString("dd MMMM yyyy")</p>
+                                <p>
+                                    <i class="fa-solid fa-clock me-2"></i>
+                                    @if (booking.KhungGio != null)
+                                    {
+                                        <span>@booking.KhungGio.GioBatDau.ToString(@"hh\:mm") - @booking.KhungGio.GioKetThuc.ToString(@"hh\:mm")</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-danger">Lỗi khung giờ</span>
+                                    }
+                                </p>                                <p class="fw-bold mt-2">Total Paid: @string.Format("{0:N0} VNĐ", booking.TongTien)</p>
+                            </div>
+                            <div class="booking-actions text-end">
+                                <p class="small text-muted mb-2">Order ID: @booking.MaDat</p>
+                                <button class="btn btn-sm btn-outline-danger me-2 btn-cancel-booking"
+                                        data-id="@booking.MaDat">
+                                        Cancel
+                                </button>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Details</a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <p class="mt-3">No upcoming bookings found.</p>
+                    </div>
+                }
+            </div>
+
+            <div class="tab-pane fade" id="pills-history" role="tabpanel">
+                @if (Model.PastBookings.Any())
+                {
+                    foreach (var booking in Model.PastBookings)
+                    {
+                        string statusClass = booking.TrangThai == "Đã hủy" ? "status-cancelled" : "status-confirmed";
+
+                        <div class="booking-card d-flex justify-content-between align-items-start">
+                            <div class="booking-info">
+                                <span class="status-badge @statusClass">@booking.TrangThai</span>
+                                <h5 class="mt-2">@booking.SanTheThao.TenSan</h5>
+                                <p><i class="fa-solid fa-calendar-day me-2"></i> @booking.NgayDat.ToString("dd MMMM yyyy")</p>
+                                <p><i class="fa-solid fa-clock me-2"></i> @booking.KhungGio.GioBatDau.ToString(@"hh\:mm") - @booking.KhungGio.GioKetThuc.ToString(@"hh\:mm")</p>
+                                <p class="fw-bold mt-2">Total Paid: @string.Format("{0:N0} VNĐ", booking.TongTien)</p>
+                            </div>
+                            <div class="booking-actions text-end">
+                                <p class="small text-muted mb-2">Order ID: @booking.MaDat</p>
+                                <button class="btn btn-sm btn-outline-secondary me-2 btn-review"
+                                        data-sanid="@booking.MaSan"
+                                        data-sanname="@booking.SanTheThao.TenSan">
+                                    Review
+                                </button>
+                                <button class="btn btn-sm btn-success">Book Again</button>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <p class="mt-3">No past bookings found.</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-body p-4 text-center">
+                    <h5 class="fw-bold mb-3">Đánh giá <span id="revSanName" class="text-success"></span></h5>
+                    <input type="hidden" id="revSanId" />
+
+                    <div class="mb-3 fs-2 text-warning" id="starContainer" style="cursor:pointer;">
+                        <i class="fa-regular fa-star star-item" data-val="1"></i>
+                        <i class="fa-regular fa-star star-item" data-val="2"></i>
+                        <i class="fa-regular fa-star star-item" data-val="3"></i>
+                        <i class="fa-regular fa-star star-item" data-val="4"></i>
+                        <i class="fa-regular fa-star star-item" data-val="5"></i>
+                    </div>
+                    <input type="hidden" id="revScore" value="5" />
+
+                    <textarea id="revContent" class="form-control rounded-3 mb-3" rows="3" placeholder="Chia sẻ trải nghiệm của bạn về sân này..."></textarea>
+
+                    <button type="button" id="btnSubmitReview" class="btn btn-success w-100 rounded-pill fw-bold py-2">GỬI ĐÁNH GIÁ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".btn-cancel-booking").forEach(btn => {
+                btn.addEventListener("click", async function () {
+                    const maDat = this.getAttribute("data-id");
+
+                    if (confirm(`Bạn có chắc chắn muốn hủy đơn hàng ${maDat} không?`)) {
+                        try {
+                            const res = await fetch("/Bookings/CancelBooking", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ maDat: maDat })
+                            });
+                            const data = await res.json();
+
+                            if (data.success) {
+                                alert("Hủy đơn thành công!");
+                                window.location.reload(); 
+                            } else {
+                                alert("Lỗi: " + data.message);
+                            }
+                        } catch (err) {
+                            console.error(err);
+                            alert("Đã xảy ra lỗi khi gửi yêu cầu!");
+                        }
+                    }
+                });
+            });
+        });
+        document.querySelectorAll(".btn-review").forEach(btn => {
+            btn.onclick = () => {
+                document.getElementById("revSanId").value = btn.dataset.sanid;
+                document.getElementById("revSanName").innerText = btn.dataset.sanname;
+                new bootstrap.Modal(document.getElementById('reviewModal')).show();
+            };
+        });
+
+        const stars = document.querySelectorAll(".star-item");
+        stars.forEach(s => {
+            s.onclick = () => {
+                const val = parseInt(s.dataset.val);
+                document.getElementById("revScore").value = val;
+                stars.forEach((star, index) => {
+                    if (index < val) {
+                        star.classList.replace("fa-regular", "fa-solid");
+                    } else {
+                        star.classList.replace("fa-solid", "fa-regular");
+                    }
+                });
+            };
+        });
+
+        document.getElementById("btnSubmitReview").onclick = async () => {
+            const data = {
+                maSan: document.getElementById("revSanId").value,
+                diem: document.getElementById("revScore").value,
+                noiDung: document.getElementById("revContent").value
+            };
+
+            const res = await fetch("/Account/SubmitReview", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if (result.success) {
+                alert("Cảm ơn bạn đã đánh giá!");
+                location.reload();
+            }
+        };
+    </script>
+}

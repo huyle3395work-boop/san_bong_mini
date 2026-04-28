@@ -1,0 +1,107 @@
+﻿@model Demo.Models.KHACHHANG
+@{
+    ViewBag.Title = "Gửi góp ý";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var avatarUrl = string.IsNullOrEmpty(Model.AnhDaiDien) ? "/Content/images/default-avatar.png" : Model.AnhDaiDien;
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+    .profile-layout-wrapper {
+        display: flex;
+        max-width: 1200px;
+        margin: 40px auto;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .profile-sidebar {
+        flex: 0 0 250px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        overflow: hidden;
+    }
+
+    .user-info-card {
+        text-align: center;
+        padding: 20px 15px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .user-info-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+    .nav-link-custom {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 20px;
+        color: #666;
+        text-decoration: none;
+        font-weight: 600;
+        border-left: 4px solid transparent;
+    }
+
+        .nav-link-custom:hover {
+            background-color: #e6f9f0;
+            color: #00c853;
+        }
+
+        .nav-link-custom.active {
+            background-color: #00c853;
+            color: #fff;
+            border-left: 4px solid #00c853;
+        }
+
+    .bookings-content {
+        flex-grow: 1;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        padding: 30px;
+    }
+</style>
+
+<div class="profile-layout-wrapper">
+    <div class="profile-sidebar">
+        <div class="user-info-card">
+            <img src="@avatarUrl" alt="Avatar" />
+            <h5 class="fw-bold">@Model.HoTen</h5>
+            <p class="small text-success">@Model.Email</p>
+        </div>
+        <div class="list-group list-group-flush border-0">
+            <a href="@Url.Action("MyBookings", "Bookings")" class="nav-link-custom">
+                <i class="fa-solid fa-clipboard-list"></i> All Bookings
+            </a>
+            <a href="@Url.Action("EditProfile", "Account")" class="nav-link-custom">
+                <i class="fa-solid fa-user-edit"></i> Edit Profile
+            </a>
+            <a href="#" class="nav-link-custom active">
+                <i class="fa-solid fa-comment-dots"></i> Feedback
+            </a>
+        </div>
+    </div>
+
+    <div class="bookings-content">
+        <h4 class="fw-bold mb-1">Feedback</h4>
+        <p class="text-muted small mb-4">Mọi ý kiến của bạn sẽ giúp Playo phục vụ tốt hơn.</p>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold small text-muted">Nội dung góp ý <span class="text-danger">*</span></label>
+            <textarea id="txtFeedback" class="form-control rounded-3" rows="6" placeholder="Nhập ý kiến của bạn tại đây..."></textarea>
+        </div>
+
+        <div id="fbResult" class="mb-3 small fw-bold"></div>
+
+        <button id="btnSendFB" class="btn btn-success w-100 rounded-pill fw-bold py-2">
+            GỬI GÓP Ý NGAY
+        </button>
+    </div>
+</div>

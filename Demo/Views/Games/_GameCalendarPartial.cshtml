@@ -1,0 +1,134 @@
+﻿@{
+    Layout = null;
+
+    var today = DateTime.Today;
+    var year = today.Year;
+    var month = today.Month;
+
+    var firstDayOfMonth = new DateTime(year, month, 1);
+    var daysInMonth = DateTime.DaysInMonth(year, month);
+    var startDay = (int)firstDayOfMonth.DayOfWeek; // Sun = 0
+}
+
+<style>
+    .calendar-wrapper {
+        width: 100%;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+        .calendar-header button {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+    .calendar-week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        font-size: 0.8rem;
+        text-align: center;
+        color: #777;
+        margin-bottom: 6px;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+        text-align: center;
+    }
+
+    .calendar-day {
+        padding: 8px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.2s;
+    }
+
+        .calendar-day:hover {
+            background: #00c853;
+            color: #fff;
+        }
+
+        .calendar-day.selected {
+            background: #00c853;
+            color: #fff;
+        }
+
+        .calendar-day.disabled {
+            color: #cfcfcf;
+            cursor: not-allowed;
+        }
+
+            .calendar-day.disabled:hover {
+                background: none;
+                color: #cfcfcf;
+            }
+
+    .calendar-footer {
+        margin-top: 12px;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+        text-align: center;
+    }
+
+        .calendar-footer button {
+            border: none;
+            background: none;
+            color: #00c853;
+            font-weight: 600;
+            cursor: pointer;
+        }
+</style>
+
+<div class="calendar-wrapper">
+
+    <div class="calendar-header">
+        <button>&lsaquo;</button>
+        <span>@today.ToString("MMMM yyyy")</span>
+        <button>&rsaquo;</button>
+    </div>
+
+    <div class="calendar-week">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+    </div>
+
+    <div class="calendar-grid">
+        @for (int i = 0; i < startDay; i++)
+        {
+            <div></div>
+        }
+
+        @for (int day = 1; day <= daysInMonth; day++)
+        {
+            var currentDate = new DateTime(year, month, day);
+            var isPast = currentDate < today;
+            var dateValue = currentDate.ToString("yyyy-MM-dd");
+
+            <div class="calendar-day @(isPast ? "disabled" : "")"
+                 data-date="@dateValue">
+                @day
+            </div>
+        }
+    </div>
+
+    <div class="calendar-footer">
+        <button id="calendarTodayBtn">Today</button>
+    </div>
+</div>

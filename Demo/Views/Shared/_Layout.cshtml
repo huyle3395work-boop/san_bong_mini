@@ -1,0 +1,470 @@
+﻿@{
+    Layout = null;
+    var email = User.Identity.IsAuthenticated ? User.Identity.Name : null;
+    Demo.Models.KHACHHANG kh = null;
+    if (email != null)
+    {
+        using (var db = new Demo.Models.QL_SAN_THE_THAOEntities())
+        {
+            kh = db.KHACHHANG.FirstOrDefault(x => x.Email == email);
+        }
+    }
+    var avatar = kh?.AnhDaiDien ?? "/Content/images/default-avatar.png";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - PLAYO VN</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fff;
+            padding-top: 70px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .nav-right-auth {
+            position: relative;
+            z-index: 2000 !important;
+        }
+
+        .dropdown-menu {
+            z-index: 3000 !important;
+        }
+
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 70px;
+            z-index: 1500;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: #82bb30;
+            text-decoration: none;
+        }
+
+        .nav-center-menu {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-link {
+            color: #333;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 15px;
+        }
+
+            .nav-link:hover, .nav-link.active {
+                color: #82bb30 !important;
+            }
+
+        .footer-countries-wrapper {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            margin-bottom: 60px;
+            border: 1px solid #f1f1f1;
+            width: 100%;
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px 30px;
+            align-items: flex-start;
+        }
+
+        .country-item {
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            pointer-events: auto;
+        }
+
+            .country-item:hover {
+                border-color: #82bb30;
+                background-color: #f9fffb;
+            }
+
+            .country-item.active {
+                border-color: #82bb30;
+                box-shadow: 0 4px 15px rgba(130, 187, 48, 0.1);
+            }
+
+        .country-main-info, .country-info, .country-flag, .country-name, .fa-chevron-down, .country-details, .country-details p {
+            pointer-events: none;
+        }
+
+        .country-main-info {
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .country-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .country-flag {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .country-name {
+            font-weight: 700;
+            color: #4a5453;
+            font-size: 15px;
+        }
+
+        .fa-chevron-down {
+            color: #adb5b5;
+            font-size: 13px;
+            transition: transform 0.4s ease;
+        }
+
+        .country-item.active .fa-chevron-down {
+            transform: rotate(180deg);
+            color: #82bb30;
+        }
+
+        .country-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            padding: 0 22px;
+        }
+
+        .country-item.active .country-details {
+            max-height: 300px;
+            opacity: 1;
+            padding-bottom: 20px;
+        }
+
+        .country-details p {
+            font-size: 13px;
+            color: #667070;
+            line-height: 1.8;
+            margin: 0;
+            padding-top: 10px;
+            border-top: 1px solid #f9f9f9;
+        }
+
+        footer {
+            background-color: #f8f9f9;
+            padding: 80px 0 100px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .footer-content-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .footer-left {
+            max-width: 300px;
+        }
+
+        .footer-logo-box {
+            background-color: #363f3e;
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: #9ca5a4;
+            line-height: 1.6;
+        }
+
+        .footer-right {
+            display: flex;
+            gap: 80px;
+            text-align: left;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-title {
+            font-size: 12px;
+            color: #adb5b5;
+            margin-bottom: 30px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .footer-link {
+            color: #4a5453;
+            text-decoration: none;
+            margin-bottom: 18px;
+            font-weight: 900;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+            .footer-link:hover {
+                color: #82bb30;
+            }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="d-flex align-items-center">
+            <a href="@Url.Action("Index", "San")" class="logo">
+                <img height="25" src="~/Content/images/new-logo-playo.png" alt="Playo" />
+            </a>
+        </div>
+        <div class="nav-center-menu">
+            @{ string ctrl = ViewContext.RouteData.Values["controller"]?.ToString(); }
+            <a href="@Url.Action("Index", "Games")" class="nav-link @(ctrl == "Games" ? "active" : "")"><i class="fa-solid fa-person-running"></i> Play</a>
+            <a href="@Url.Action("Index", "Venues")" class="nav-link @(ctrl == "Venues" ? "active" : "")"><i class="fa-solid fa-baseball"></i> Book</a>
+            <a href="@Url.Action("Index", "Trainer")" class="nav-link @(ctrl == "Trainer" ? "active" : "")"><i class="fa-solid fa-graduation-cap"></i> Train</a>
+        </div>
+
+        <div class="nav-right-auth d-flex align-items-center">
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (Session["VaiTro"] != null && Session["VaiTro"].ToString() == "Admin")
+                {
+                    <a href="@Url.Action("Index", "Admin")" class="btn btn-danger btn-sm fw-bold me-3 rounded-pill">
+                        <i class="fa-solid fa-user-shield me-1"></i> Quản Trị
+                    </a>
+                }
+
+                <div class="dropdown">
+                    <a href="javascript:void(0)" class="nav-link dropdown-toggle d-flex align-items-center" id="dropdownUser" data-bs-toggle="dropdown">
+                        <img src="@avatar" class="rounded-circle border" width="36" height="36" style="object-fit:cover;" />
+                        <i class="fa-solid fa-chevron-down ms-1 small"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                        <li><a class="dropdown-item fw-bold" href="@Url.Action("Profile", "Account")"><i class="fa-regular fa-user me-2"></i>Profile</a></li>
+                        <li><a class="dropdown-item fw-bold" href="@Url.Action("MyBookings", "Bookings")"><i class="fa-solid fa-clock-history me-2"></i>My Bookings</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item text-danger fw-bold" href="#" id="btnLogout"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a></li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <a href="#" class="nav-link nav-link-login" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="fa-solid fa-user me-1"></i> Login / Signup</a>
+            }
+        </div>
+    </nav>
+
+    <main>@RenderBody()</main>
+
+    <footer>
+        <div class="footer-content-container">
+            <div class="footer-countries-wrapper">
+                <div class="country-grid">
+                    @{
+                        var countries = new List<(string Name, string Code, string Text)> {
+                            ("Vietnam", "vn", "Badminton Courts | Football Grounds | Tennis Courts in Vietnam"),
+                            ("India", "in", "Cricket Grounds | Football Grounds | Badminton Courts in India"),
+                            ("Dubai", "ae", "Sports Complexes | Basketball Courts | Swimming Pools in Dubai"),
+                            ("Singapore", "sg", "Tennis Courts | Football Grounds | Badminton Courts in Singapore"),
+                            ("Qatar", "qa", "Football Grounds | Tennis Courts | Swimming Pools in Qatar"),
+                            ("Australia", "au", "Cricket Grounds | Football Grounds | Tennis Courts in Australia"),
+                            ("Malaysia", "my", "Badminton Courts | Football Grounds | Sports Complexes in Malaysia"),
+                            ("Japan", "jp", "Baseball Fields | Football Grounds | Tennis Courts in Japan"),
+                            ("USA", "us", "Basketball Courts | Baseball Fields | Tennis Courts in USA"),
+                            ("United Kingdom", "gb", "Football Grounds | Cricket Grounds | Tennis Courts in UK"),
+                            ("Thailand", "th", "Badminton Courts | Football Grounds | Muay Thai Gyms"),
+                            ("Korea", "kr", "Baseball Fields | Football Grounds | Archery Ranges"),
+                            ("France", "fr", "Football Grounds | Tennis Courts | Cycling Tracks"),
+                            ("Germany", "de", "Football Grounds | Tennis Courts | Sports Halls")
+                        };
+                    }
+
+                    @foreach (var c in countries)
+                    {
+                        <div class="country-item">
+                            <div class="country-main-info">
+                                <div class="country-info">
+                                    <img class="country-flag" src="https://flagcdn.com/w80/@(c.Code).png" alt="@c.Name">
+                                    <span class="country-name">@c.Name</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <div class="country-details">
+                                <p>@c.Text</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="footer-wrapper">
+                <div class="footer-left">
+                    <div class="footer-logo-box">PLAYO</div>
+                    <div class="footer-copy">
+                        © 2025 Techmash Solutions Pvt. Ltd.<br />
+                        All Rights Reserved.
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-column">
+                        <div class="footer-title">Company</div>
+                        <a href="#" class="footer-link">About Us</a>
+                        <a href="#" class="footer-link">Blogs</a>
+                        <a href="#" class="footer-link">Contact</a>
+                    </div>
+                    <div class="footer-column">
+                        <div class="footer-title">Social</div>
+                        <a href="#" class="footer-link">Instagram</a>
+                        <a href="#" class="footer-link">Facebook</a>
+                        <a href="#" class="footer-link">Twitter</a>
+                    </div>
+                    <div class="footer-column">
+                        <div class="footer-title">Privacy & Terms</div>
+                        <a href="#" class="footer-link">Faqs</a>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                        <a href="#" class="footer-link">Terms Of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Html.Partial("~/Views/Account/_LoginModal.cshtml")
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoutBtn = document.getElementById("btnLogout");
+            const confirmBtn = document.getElementById("btnConfirmLogout");
+            if (logoutBtn) { logoutBtn.addEventListener("click", (e) => { e.preventDefault(); new bootstrap.Modal(document.getElementById("logoutConfirmModal")).show(); }); }
+            if (confirmBtn) { confirmBtn.addEventListener("click", async () => { const res = await fetch("/Account/Logout", { method: "GET" }); const data = await res.json(); if (data.success) window.location.reload(); }); }
+
+            const items = document.querySelectorAll('.country-item');
+            items.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const current = e.currentTarget;
+                    const wasActive = current.classList.contains('active');
+                    items.forEach(el => el.classList.remove('active'));
+                    if (!wasActive) {
+                        current.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <div class="modal fade" id="logoutConfirmModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow rounded-4 text-center p-4">
+                <h5 class="text-danger mb-3 fw-bold">Are you sure you want to logout?</h5>
+                <div class="d-flex justify-content-center gap-3 mt-3">
+                    <button type="button" class="btn btn-light px-4 rounded-pill fw-bold" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" id="btnConfirmLogout" class="btn btn-danger px-4 rounded-pill fw-bold">Yes, Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderSection("Scripts", required: false)
+    <div class="modal fade" id="authWarningModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow border-0 overflow-hidden">
+                <div class="modal-header border-0 bg-light">
+                    <h5 class="modal-title fw-bold text-danger"><i class="fa-solid fa-user-lock me-2"></i>Bạn chưa đăng nhập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <p class="text-muted mb-4 fs-5">Vui lòng đăng nhập để quản lý lịch đặt sân tốt hơn, hoặc tiếp tục với tư cách Khách vãng lai.</p>
+
+                    <div class="d-grid gap-3">
+                        <button type="button"
+                                class="btn btn-success fw-bold py-2 rounded-pill"
+                                data-bs-dismiss="modal"
+                                data-bs-toggle="modal"
+                                data-bs-target="#loginModal">
+                            <i class="fa-solid fa-right-to-bracket me-2"></i> Đăng nhập ngay
+                        </button>
+                        <a href="#" id="btnContinueGuest" class="btn btn-outline-secondary fw-bold py-2 rounded-pill">
+                            Tiếp tục mà không cần đăng nhập <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function checkBookingAccess(e, targetUrl) {
+        var isAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower();
+
+        if (!isAuthenticated) {
+            e.preventDefault();
+
+            document.getElementById('btnContinueGuest').href = targetUrl;
+
+            var myModal = new bootstrap.Modal(document.getElementById('authWarningModal'));
+            myModal.show();
+        }
+
+    }    
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@model Demo.Models.DichVu
+
+@{
+    ViewBag.Title = "Xác nhận Xóa Dịch vụ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xác nhận Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa dịch vụ này không?</h3>
+
+<div>
+    <h4>@Model.TenDichVu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Mã dịch vụ</dt>
+        <dd>@Model.MaDV</dd>
+
+        <dt>Đơn vị</dt>
+        <dd>@Model.DonViTinh</dd>
+
+        <dt>Đơn giá</dt>
+        <dd>@String.Format("{0:N0} đ", Model.DonGia)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Xóa Vĩnh Viễn" class="btn btn-danger" />
+        @Html.ActionLink("Quay lại danh sách", "ManageServices", null, new { @class = "btn btn-secondary" })
+    }
+</div>

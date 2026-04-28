@@ -1,0 +1,273 @@
+﻿@model Demo.ViewModels.San
+@{
+    ViewBag.Title = "Danh Sách Sân Thể Thao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+<style>
+    body {
+        background-color: #f7f8f8;
+    }
+
+    .venue-main-header {
+        background-color: #fff;
+        padding: 40px 0 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .venues-count-tab {
+        font-weight: 700;
+        color: #28a745;
+        border-bottom: 3px solid #28a745;
+        padding-bottom: 10px;
+        margin-right: 25px;
+        font-size: 1rem;
+    }
+
+    .venue-search-input {
+        height: 50px;
+        border-radius: 8px;
+        font-size: 0.95rem;
+    }
+
+    .venue-sports-select {
+        height: 50px;
+        border-radius: 8px;
+        width: 150px;
+        font-size: 0.95rem;
+    }
+
+    .venue-card {
+        background: #fff;
+        border: 1px solid #f0f0f0;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: box-shadow 0.2s, transform 0.2s;
+        height: 100%;
+    }
+
+        .venue-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+
+    .venue-img-wrapper {
+        height: 180px;
+        position: relative;
+    }
+
+        .venue-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .venue-featured-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #ffc107;
+        color: #333;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+
+    .venue-bookable-badge {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: #28a745;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+
+    .venue-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 3px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .venue-rating {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #6c757d;
+        display: flex;
+        align-items: center;
+    }
+
+        .venue-rating i {
+            color: #ffc107;
+            margin-right: 3px;
+        }
+
+    .venue-distance {
+        font-size: 0.85rem;
+        color: #757575;
+        margin-bottom: 8px;
+    }
+
+    .venue-icons i {
+        color: #495057;
+        font-size: 1.1rem;
+        margin-right: 10px;
+    }
+
+    .show-more-btn {
+        background-color: #28a745;
+        color: #fff;
+        font-weight: 700;
+        padding: 10px 30px;
+        border-radius: 8px;
+        border: none;
+        transition: background-color 0.2s;
+    }
+
+        .show-more-btn:hover {
+            background-color: #1e7e34;
+            color: #fff;
+        }
+</style>
+
+<div class="venue-main-header">
+    <div class="container">
+        <form method="get" action="@Url.Action("Index", "Venues")" id="searchForm">
+            <div class="row mb-4 align-items-center">
+                <div class="col-md-6">
+                    <h3 class="fw-bold m-0">Discover and book sports fields near you.</h3>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-end gap-3">
+                    <input type="text"
+                           name="search"
+                           class="form-control venue-search-input"
+                           placeholder="Search..."
+                           value="@ViewBag.CurrentSearch">
+
+                    <select class="form-select venue-sports-select" name="maLoai" onchange="document.getElementById('searchForm').submit()">
+                        <option value="All">All</option>
+
+                        @if (ViewBag.DanhSachLoai != null)
+                        {
+                            foreach (var loai in (IEnumerable<Demo.Models.LoaiTheThao>)ViewBag.DanhSachLoai)
+                            {
+                                var isSelected = (ViewBag.CurrentMaLoai as string) == loai.MaLoai ? "selected" : "";
+                                <option value="@loai.MaLoai" @isSelected>@loai.TenLoai</option>
+                            }
+                        }
+                    </select>
+
+                    <button type="submit" class="btn btn-success fw-bold">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class="d-flex border-bottom">
+            <a href="#" class="venues-count-tab text-decoration-none">
+                Danh sách sân (@(Model.SanNoiBat != null ? Model.SanNoiBat.Count() : 0))
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row">
+        @if (Model.SanNoiBat != null && Model.SanNoiBat.Any())
+        {
+            foreach (var san in Model.SanNoiBat)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="venue-card">
+                        <a href="@Url.Action("Details", "Venues", new { id = san.MaSan })" class="text-decoration-none text-dark">
+                            <div class="venue-img-wrapper">
+                                <img src="@(string.IsNullOrEmpty(san.HinhAnh) ? Url.Content("~/Content/images/default-venue.jpg") : Url.Content("~" + san.HinhAnh))"
+                                     alt="@san.TenSan">
+
+                                @if (san.IsNoiBat == true)
+                                {
+                                    <span class="venue-featured-badge">Outstanding</span>
+                                }
+                                <span class="venue-bookable-badge">Opening</span>
+                            </div>
+
+                            <div class="p-3">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="venue-title" title="@san.TenSan">@san.TenSan</h5>
+                                    <div class="venue-rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <span>4.5 (25)</span>
+                                    </div>
+                                </div>
+
+                                <p class="venue-distance">
+                                    <i class="fa-solid fa-location-dot me-1"></i>
+                                    @(san.KhuTheThao != null ? san.KhuTheThao.TenKhu : "Khu vực khác")
+                                </p>
+
+                                <div class="venue-icons">
+                                    @if (san.LoaiTheThao != null)
+                                    {
+                                        var tenLoai = san.LoaiTheThao.TenLoai.ToLower();
+                                        if (tenLoai.Contains("bóng đá"))
+                                        {
+                                            <i class="fa-solid fa-futbol text-success" title="Footballq"></i>
+                                        }
+                                        else if (tenLoai.Contains("cầu lông"))
+                                        {
+                                            <i class="fa-solid fa-feather text-info" title="Cầu lông"></i>
+                                        }
+                                        else if (tenLoai.Contains("tennis") || tenLoai.Contains("quần vợt"))
+                                        {
+                                            <i class="fa-solid fa-table-tennis-paddle-ball text-warning" title="Tennis"></i>
+                                        }
+                                        else if (tenLoai.Contains("bóng rổ"))
+                                        {
+                                            <i class="fa-solid fa-basketball text-danger" title="Bóng rổ"></i>
+                                        }
+                                        else if (tenLoai.Contains("bơi"))
+                                        {
+                                            <i class="fa-solid fa-person-swimming text-primary" title="Bơi lội"></i>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">@san.LoaiTheThao.TenLoai</span>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center text-muted py-5">
+                <i class="fa-solid fa-circle-exclamation mb-3" style="font-size: 30px;"></i>
+                <p>Không tìm thấy địa điểm nào phù hợp.</p>
+            </div>
+        }
+    </div>
+
+    @if (Model.SanNoiBat != null && Model.SanNoiBat.Count() > 6)
+    {
+        <div class="text-center pt-3 pb-5">
+            <button class="show-more-btn">LOAD MORE</button>
+        </div>
+    }
+</div>

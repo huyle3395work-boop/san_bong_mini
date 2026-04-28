@@ -1,0 +1,40 @@
+﻿@model Demo.Models.SanTheThao
+
+@{
+    ViewBag.Title = "Xác nhận Xóa Sân";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xác nhận Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa sân này không? Dữ liệu liên quan có thể bị mất.</h3>
+<div>
+    <h4>Sân Thể Thao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Mã Sân</dt>
+        <dd>@Html.DisplayFor(model => model.MaSan)</dd>
+
+        <dt>Tên Sân</dt>
+        <dd>@Html.DisplayFor(model => model.TenSan)</dd>
+
+        <dt>Giá Thuê</dt>
+        <dd>@Model.GiaThueTheoGio VNĐ</dd>
+
+        <dt>Loại Thể Thao</dt>
+        <dd>@(Model.LoaiTheThao?.TenLoai ?? "N/A")</dd>
+
+        <dt>Trạng Thái</dt>
+        <dd>@Html.DisplayFor(model => model.TrangThai)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay lại danh sách", "ManageVenues")
+        </div>
+    }
+</div>

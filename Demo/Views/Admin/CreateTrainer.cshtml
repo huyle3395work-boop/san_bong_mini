@@ -1,0 +1,110 @@
+﻿@model Demo.Models.Trainer
+
+@{
+    ViewBag.Title = "Thêm Huấn luyện viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Thông tin Huấn luyện viên</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.HoTen, "Họ tên", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.HoTen)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.MoTaNgan, "Mô tả ngắn", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.MoTaNgan, new { @class = "form-control", rows = 3 })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.KhuVuc, "Khu vực", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.KhuVuc, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AnhDaiDienUrl, "Ảnh đại diện (URL)", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.AnhDaiDienUrl, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.GiaMoiBuoi, "Giá mỗi buổi", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.GiaMoiBuoi, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SoNamKinhNghiem, "Số năm kinh nghiệm", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.SoNamKinhNghiem, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ChungChi, "Chứng chỉ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.ChungChi, new { @class = "form-control", rows = 3 })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.AgeGroup, "Nhóm độ tuổi", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.AgeGroup,
+                         new SelectList(new[]
+                         {
+                        "Chỉ trẻ em",
+                        "Chỉ người lớn",
+                        "Mọi lứa tuổi"
+                         }),
+                         "-- Chọn nhóm tuổi --",
+                         new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Services, "Dịch vụ cung cấp", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(m => m.Services, new { @class = "form-control", rows = 2, placeholder = "VD: Dạy 1-1, Dạy nhóm" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.IsAcademy, "Là Academy?", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <br />
+                @{
+                    var isAcademyChecked = Model?.IsAcademy ?? false;
+                }
+                @Html.CheckBox("IsAcademy", isAcademyChecked, new { @class = "form-check-input" })
+                @Html.ValidationMessageFor(m => m.IsAcademy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 mt-3">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+                @Html.ActionLink("Hủy", "ManageTrainers", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+}
